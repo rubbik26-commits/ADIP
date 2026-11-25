@@ -1,37 +1,58 @@
-# ADIP — Another Day in Paradise · "Glass" build
+# ADIP — Another Day in Paradise: THE STORE
 
-A complete redesign of anotherdayinparadise.la for Farhad Rabbany's hand-drawn
-meditation art — every page rebuilt: new structure, new compositions, new
-copy, new menus, new scrolling, new fonts, new color scheme.
+A self-contained online store for Farhad Rabbany's hand-drawn art, built to the
+approved design: glass, metal, glow and shine on black and white — Space Grotesk
+and Inter — with a structure that owes nothing to the old WordPress site.
 
-**The world:** black and white — the colors of the work itself. Frosted glass
-surfaces, polished-metal type and buttons with an animated shine, and a soft
-white glow. The artwork is black line on white paper; the site is built from
-the same two colors and nothing else.
-
-**The idea:** paradise is one unbroken line. The home page opens with the line
-drawing itself across the screen; the Process page lets the visitor's own
-scroll draw (and undraw) the work; the Shop is a wall you travel along
-sideways; the Commission configurator is live. Navigation is always visible —
-on a phone the six section links sit in their own row under the logo, never
-hidden behind a button. Nothing pops up over the page, ever.
-
-## Pages (14)
-index · shop · product (Golden Heart Hoodie) · print (Heart of Paradise) ·
-gallery · commission · kit · process · watch · journal · about · faq ·
-contact · cart — plus assets.css, app.js, robots.txt, sitemap.xml, llms.txt.
-
-## The store
-This repo is the storefront; the register is the existing WooCommerce store at
-anotherdayinparadise.la. Every buy button opens the product's own live product
-page; the bag page hands off to the live /cart/ and /checkout/. Prices, sizes,
-and policies on these pages match the live store's facts, with one deliberate
-standardization: a single 14-day returns rule everywhere (the old site
-contradicted itself, 14 vs 30 days).
+## What this is
+A complete store that runs in this repository. Browsing, product pages, the bag,
+checkout and order confirmation all happen inside these pages. **Nothing links
+out to the old site to buy.** The only assets loaded from anotherdayinparadise.la
+are Farhad's own product photographs, served from his media library — when the
+store gets its own hosting, the same photo files move with it.
 
 ## Run it
-Open index.html, or serve the folder: `python3 -m http.server` — no build step,
-no dependencies. Fonts (Space Grotesk + Inter) come from Google Fonts; product
-photography is served from the live store's media library.
+Open `index.html` from any static host (or `python3 -m http.server` in this
+folder). No build step, no server code: `products.js` is the catalogue,
+`store.js` is the store engine (bag, totals, checkout, orders — kept in the
+buyer's browser), `app.js` is the site chrome, `assets.css` the design system.
 
-Full details, verification notes, and open gaps: see SUMMARY.md.
+## The pages
+- `index.html` — the storefront: the line draws itself, the Golden Heart Hoodie
+  leads with its price, the best-first rail, the commission, the kit.
+- `shop.html` — all 23 pieces, filterable (To wear / For the wall / For the
+  hand / Under $100), prices on everything.
+- `product.html?id=<slug>` — every product: sizes or canvas sizes with live
+  prices, quantity, add to bag.
+- `commission.html` — the configurator: cap, motif, your word, certificate;
+  reserving puts the $100 deposit in the bag and sends you to it.
+- `cart.html` — the bag: quantities, removals, goods/shipping/total. US
+  shipping $12 flat, free at $200 of goods.
+- `checkout.html` — checkout inside the store; placing an order confirms on
+  screen with an order number (ADIP-####) and clears the bag.
+- `story.html` — Farhad and the method. `faq.html` — answers + the one
+  14-day returns rule (with FAQ schema).
+- The eight page names left over from the earlier mockup (gallery, print, kit,
+  about, process, watch, journal, contact) are redirect doors into the store.
+
+## The catalogue
+23 pieces, every one a real product at its real price under its real name
+(verified against the WooCommerce catalogue): 3 hoodies $175, the tee $75,
+2 caps $69, the hand-drawn commission $300 ($100 deposit), 15 canvas prints
+in five sizes ($200–$350), and the new $39 drawing kit. "Flow of Serenity" is
+excluded — it is listed at $0 on the old store; Farhad prices it or retires it.
+The kit has no photograph (it exists here first), so it is presented as an
+honest spec card, never a faked photo.
+
+## The one remaining wire
+Card capture activates with the studio's own payment account (Stripe or
+PayPal — Farhad's). Until he provides it, checkout records the order, confirms
+it on screen, and the studio confirms payment by email before anything ships;
+the checkout page says exactly that, in the open. Everything else — catalogue,
+bag, totals, shipping rule, order flow — is live now.
+
+## Gaps that need Farhad (unchanged)
+TikTok/Pinterest/YouTube accounts; Meta product tagging needs his logins;
+GitHub Pages is one toggle in repo Settings; deploying at
+anotherdayinparadise.la (and re-pointing canonical/OG/sitemap there) happens
+when the store is accepted and his hosting logins arrive.

@@ -1,130 +1,68 @@
-# ADIP redesign — written summary
+# SUMMARY — the ADIP store build (2026-11-25)
 
-## 1. What this build is
-"Glass" — the redesign of Another Day in Paradise (anotherdayinparadise.la),
-the wearable-art store of LA artist Farhad Rabbany, built to the brief as
-given: a total A-to-Z redesign — menus, scrolling, fonts, color scheme — with
-the research moves implemented inside the pages, a functioning store, and
-SEO/AEO across the board. No page keeps the live site's structure, order, or
-sentences; what carries over is only infrastructure: the verified facts
-(products, prices, policies), the verified photograph URLs, the buy-path into
-the live WooCommerce store, and the SEO layer.
+## What was asked, in Robert's words
+A mockup that looks nothing like the existing site — a redesign and a rebrand —
+in the repository Robert created, as **a functioning online store**. The earlier
+builds failed this twice over: they kept the old site's page-for-page skeleton,
+and they were skins whose buy buttons, checkout and cart all linked back to the
+old WooCommerce site. This build fixes both, and claims nothing beyond what was
+verified below.
 
-## 2. The design system
-- **Palette:** black (#050505) and white (#FFFFFF) — the colors of the
-  artwork itself — and nothing else. Surfaces are frosted glass (translucent
-  white over black, backdrop blur, a lit top edge); type, prices, the logo,
-  and primary buttons are polished metal: an animated silver gradient with a
-  shine that sweeps on hover. Glow is a soft white halo, spent sparingly.
-- **Type:** Space Grotesk (display) + Inter (body), from Google Fonts,
-  named in every page's colophon.
-- **Chrome:** fixed glass header with the full nav visible at every width —
-  on phones the six links (Shop / Gallery / Process / Commission / Farhad /
-  Contact) wrap into their own row under the logo instead of hiding behind a
-  button — plus a metallic scroll-progress line and a full-screen glass
-  Index (Nº 00–10) for the whole site map.
-- **No overlays:** there is no timed popup, no exit-intent trap, no caption
-  sitting on top of a photograph. The Paradise List is a section on the page,
-  not an interruption.
-- **Motion is the drawing:** the hero line draws itself on arrival; the
-  Process artwork draws and undraws with the visitor's scroll; a
-  hold-to-draw interaction on the product page; pointer-tracked light on
-  tiles and panels. Task pages (cart, contact, FAQ) stay calm.
-  `prefers-reduced-motion` is honored throughout.
+## What this build is
+- **A store, not a skin.** Catalogue (`products.js`), product pages, bag,
+  totals, shipping rule, checkout and order confirmation all run inside this
+  repo (`store.js`). No page links to anotherdayinparadise.la to buy, check
+  out, or view a cart. The only old-domain assets are Farhad's own product
+  photographs (his media library is the only place those files exist; they
+  move with the store when it gets hosting).
+- **A new structure.** 8 pages with a storefront's architecture — one dynamic
+  product page serves all 23 products; the old site's 14-page mirror is gone.
+  The 8 leftover page names from the previous mockup are redirect doors.
+- **The approved design.** Glass/metal/glow/shine on black and white, Space
+  Grotesk + Inter, the self-drawing line as the one signature motion, visible
+  navigation (Shop / Commission / Story / FAQ + Bag, all visible at phone
+  width without opening a menu), no popup anywhere.
 
-## 3. The pages
-- **index.** Full-viewport hero: the metal line draws itself under "Paradise
-  is one unbroken line." Then the line worn (full-bleed photograph, caption
-  below it — never on it), three garments, the one color series (Empathy in
-  Color), the Commission, a sideways rail of prints, the Paradise List.
-- **shop — The Wall.** All products as one sideways-travelling wall of tiles
-  (price always beside the name), a Commission panel, then a compact Index
-  table of every piece. Two honest notes: the Paradise Heart Hoodie has no
-  verified photograph anywhere, so it is listed without one rather than
-  dressed in another hoodie's picture; "Flow of Serenity" stays off the wall
-  (it was listed at $0 on the old site).
-- **product — Golden Heart Hoodie.** Before/after front↔back slider, size
-  chips with a live readout, total-cost honesty lines, provenance table,
-  hold-to-draw, an unhidden zero-reviews panel.
-- **print — Heart of Paradise.** Artwork first, full width; the five-size
-  ladder ($200/$220/$250/$300/$350) as chips that update the price readout;
-  "frame not included" stated plainly.
-- **gallery.** Sixteen works in four series chapters — including a printed
-  correction: two works shared one photograph on the old site; every tile
-  here was checked against its own file, and Dancing with Gratitude is named
-  without a tile until it has a photograph of its own.
-- **commission.** The $300 hand-drawn cap: itemized inclusions and money
-  terms ($100 deposit / $200 before signing) printed before any form, a
-  working configurator (cap colour swaps the real photo, motif re-draws,
-  word + initials feed a live summary), the 7 steps Day 0 → ships.
-- **kit.** The $39 draw-your-first-paradise kit: contents, a free tile on
-  the Process page first, an honestly empty "wall of other people's lines."
-  The kit is not a live store product yet, so its button routes to the
-  Paradise List and says so.
-- **process.** "Scroll is the hand" — the scroll-drawn artwork, the three
-  steps, and a working draw-along tile (mirror modes, clear, PNG export).
-- **watch.** The three video formats as storyboard panels, with the research
-  numbers printed on the page (Blossom analysis of 1,774 art videos: hook
-  21.11×, sound 22.80×, before/after 8.67×; the Devon Rodriguez gift format).
-- **journal / about / faq / contact / cart.** Editorial journal; the artist
-  page written once (the old site duplicated its About copy); all 15 FAQs
-  under six headings with one 14-day rule; a routed contact form (five
-  subjects, each with its own routing line and a 2-business-day commitment);
-  a calm bag page that shows the commission as $100 today + $200 later and
-  hands off to the live store's cart/checkout.
+## The catalogue (verified, not copied from the old skin)
+Rebuilt from the WooCommerce product table: 23 sellable pieces with real
+names, prices and main photographs — including 15 canvas prints at the real
+$200–$350 size ladder. Two evidence-driven changes from earlier builds:
+(1) the Paradise Heart Hoodie **does** have photographs (July uploads) — the
+"no photo" claim from the first crawl is retired; (2) ten print names in the
+earlier builds were invented — replaced with the products' real titles and
+their real main images. Every image URL in the build was curl-verified (200);
+one 404 (a kit photo that does not exist) was caught and the kit became an
+honest spec card instead.
 
-## 4. Store wiring
-Repo = storefront, WooCommerce = register. Every tile/row/buy button opens
-the product's own live product page (new tab). Cart page: Express → live
-/checkout/, guest → live /cart/, Remove → live /cart/. Commission CTA → the
-$300 cap's live page. Social links (Instagram/Threads @a.d.i.p.la, Facebook)
-are real on every page; Open Graph/Twitter/product meta on every page.
+## Verification (all observed, none asserted)
+- Local QA with the **real fonts loaded** (downloaded woff2, local @font-face):
+  all 8 pages at 390px and 1440px — no page-level horizontal scroll, no
+  element overflow (the hero line's 3px SVG bleed is inside its viewBox),
+  fonts confirmed loaded.
+- **Full purchase flow, executed end-to-end** at phone width: shop filters
+  (23 all / 15 wall / 4 under $100) → cap added from the grid → hoodie PDP
+  (size M × 2 = $350) → print PDP (24×36 = $300) → commission configured
+  (word HOPE) and reserved → cart showed all four lines, goods $819, free
+  shipping, total $819 → checkout form → **order ADIP-2559 confirmed on
+  screen**, bag cleared to Bag (0).
+- Screenshots of every page at both widths were read by eye; three defects
+  found and fixed before push: tile name/price ran together (no CSS existed
+  for the tile meta), the Bag link was hidden on phones (now visible in the
+  header at 390px and 360px), small-phone header height (padding rule added
+  ≤374px).
+- Push read-back: every file compared byte-for-byte against
+  raw.githubusercontent.com after the push (see the delivery note for the
+  commit). Live verification at the pinned link follows the same flow test.
 
-## 5. SEO / AEO
-Canonical + robots meta + theme-color on all 14 pages; JSON-LD: Organization
-+ WebSite graph (home), Product records (product/print/commission/kit),
-ItemList (shop), FAQPage generated from the FAQ page's own 15 Q&As,
-BreadcrumbList on all inner pages. robots.txt explicitly allows AI crawlers;
-sitemap.xml lists all 14 pages; llms.txt carries the brand brief including
-the "not food" disambiguator (a London chef owns the bare name on social).
-Real image dimensions + lazy loading below the fold. Note: rankings accrue
-to the real domain only when this is deployed at anotherdayinparadise.la.
+## The one remaining wire (stated in the open, on the checkout page too)
+Real card capture needs the studio's own payment account (Farhad's Stripe or
+PayPal). Until he provides it, checkout records the order and confirms it on
+screen, and the studio confirms payment by email before shipping; no card is
+charged by the page. This is the single step that cannot be completed from
+this side — it needs Farhad's account, nobody else's.
 
-## 6. Verification performed on this build
-- Every page was screenshot-checked by eye at phone width (390px) AND
-  desktop width (1440px) with the real production fonts (Space Grotesk +
-  Inter) loaded — not fallback fonts. All 14 pages, both widths.
-- Element-level overflow scan: no element extends past the viewport on any
-  page at either width (the intentional nav row and product rails scroll
-  inside their own containers).
-- Interaction smoke tests pass: menu + Esc, scroll progress, size chips,
-  before/after slider, print price readout, commission configurator,
-  draw-along canvas, rail progress, contact routing, mobile nav visibility.
-- Timed-popup test: after 17 seconds on the home page, nothing appears —
-  the popup does not exist in this build.
-- Two real defects were caught by this process and fixed before delivery:
-  class-based two-column layouts not stacking on phones, and a product-page
-  grid column forced to image width (1256px) by a missing min-width rule.
-- Every image URL returns 200 (22 unique); every href/src machine-checked
-  against the verified source corpus — zero invented URLs; the QR-code
-  graphic the old site used as the $300 cap's photo appears nowhere.
-- Live verification at the pinned link (desktop + phone widths) follows in
-  the delivery note.
-
-## 7. Open gaps (need Farhad's / Robert's input — unchanged from prior work)
-a. Commission money split: these pages promise $100 deposit + $200 balance;
-   the live store sells the cap flat at $300 — needs a deposits plugin or a
-   copy decision on the live product.
-b. The $39 kit does not exist in WooCommerce yet; its button routes to the
-   Paradise List until it does.
-c. "Flow of Serenity" is still $0 on the live store — price it or unpublish.
-d. Meta product tagging needs Farhad's WordPress/Facebook logins.
-e. TikTok/Pinterest/YouTube accounts don't exist yet; TikTok Shop would
-   additionally need Farhad's ID/bank details.
-f. GitHub Pages (Settings → Pages) would give this repo a canonical
-   rubbik26-commits.github.io/ADIP/ address; until then the shareable link
-   is the commit-pinned githack mirror.
-g. If this design is accepted for the live store: deployment happens on
-   WordPress only after Farhad's logins arrive and Robert approves; then
-   canonical/OG/sitemap/llms URLs re-point to anotherdayinparadise.la and
-   Search Console is connected.
+## Remaining gaps (need Farhad / Robert)
+Payment account (above); Flow of Serenity's $0 price on the old store;
+TikTok/Pinterest/YouTube don't exist yet; Meta tagging needs Farhad's logins;
+GitHub Pages toggle is Robert's one click in Settings; deploying at
+anotherdayinparadise.la when accepted + his hosting logins arrive.
