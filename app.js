@@ -1,4 +1,4 @@
-// ===== ADIP garden — shared behaviour. Vanilla JS, no libraries. =====
+// ===== ADIP — shared behaviour. Vanilla JS, no libraries. =====
 // Menu (full-screen index)
 var mb=document.getElementById('menubtn'),mn=document.getElementById('menu'),mc=document.getElementById('menuclose');
 if(mb&&mn){mb.onclick=function(){mn.classList.add('open')};mc.onclick=function(){mn.classList.remove('open')};
@@ -31,17 +31,6 @@ document.querySelectorAll('.rail').forEach(function(rail){
   fill.style.width=(max>0?12+(rail.scrollLeft/max*88):100)+'%';}
  rail.addEventListener('scroll',upd,{passive:true});upd();
 });
-// Two-step capture popup: 16s or exit-intent, once per session
-(function(){var c=document.getElementById('cap');if(!c)return;
- try{if(sessionStorage.getItem('adipcap4'))return;}catch(e){}
- var shown=false;function show(){if(shown)return;shown=true;c.classList.add('open');try{sessionStorage.setItem('adipcap4','1')}catch(e){}}
- setTimeout(show,16000);
- document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<8)show();});
- document.getElementById('capx').onclick=function(){c.classList.remove('open')};
- c.addEventListener('click',function(e){if(e.target===c)c.classList.remove('open')});
- var s1=document.getElementById('capstep1'),s2=document.getElementById('capstep2');
- if(s1&&s2){s1.addEventListener('submit',function(e){e.preventDefault();s1.style.display='none';s2.style.display='block';});}
-})();
 // Scroll-drawn artwork: .drawsvg paths draw in sync with scroll through the section
 document.querySelectorAll('.drawsvg').forEach(function(box){
  var paths=box.querySelectorAll('path');paths.forEach(function(p){var L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;});

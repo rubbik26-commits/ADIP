@@ -1,57 +1,62 @@
 # ADIP redesign — written summary
 
 ## 1. What this build is
-"Midnight Garden" — a from-scratch redesign of Another Day in Paradise
-(anotherdayinparadise.la), the wearable-art store of LA artist Farhad Rabbany.
-Nothing from the live site's structure survives: no page keeps its old
-sections, order, compositions, or sentences. What carries over is only
-infrastructure: the verified facts (products, prices, policies), the verified
-photograph URLs, the buy-path into the live WooCommerce store, and the
-SEO/AEO layer.
+"Glass" — the redesign of Another Day in Paradise (anotherdayinparadise.la),
+the wearable-art store of LA artist Farhad Rabbany, built to the brief as
+given: a total A-to-Z redesign — menus, scrolling, fonts, color scheme — with
+the research moves implemented inside the pages, a functioning store, and
+SEO/AEO across the board. No page keeps the live site's structure, order, or
+sentences; what carries over is only infrastructure: the verified facts
+(products, prices, policies), the verified photograph URLs, the buy-path into
+the live WooCommerce store, and the SEO layer.
 
 ## 2. The design system
-- **Palette:** deep green-black (#060D09 → #0F2417) with warm bone (#F2EEE3)
-  light rooms, and a single animated iridescent gradient (mint #7FE3B0, sky
-  #9ADCF5, lilac #D9A7F2, sun #F2C14E) drawn from *Empathy in Color, Series II*
-  — the one series in color. Iridescence is spent only on what matters: the
-  logo, primary buttons, prices, the drawn line itself.
-- **Type:** Syne (display), Manrope (body), Space Grotesk (labels) — loaded
-  from Google Fonts, self-documented in every page's colophon.
-- **Chrome:** fixed glass header (blur + visible nav: Shop / Gallery /
-  Process / Commission / Farhad / Contact + Bag), an iridescent
-  scroll-progress bar, and a full-screen glass Index menu (Nº 00–10).
+- **Palette:** black (#050505) and white (#FFFFFF) — the colors of the
+  artwork itself — and nothing else. Surfaces are frosted glass (translucent
+  white over black, backdrop blur, a lit top edge); type, prices, the logo,
+  and primary buttons are polished metal: an animated silver gradient with a
+  shine that sweeps on hover. Glow is a soft white halo, spent sparingly.
+- **Type:** Space Grotesk (display) + Inter (body), from Google Fonts,
+  named in every page's colophon.
+- **Chrome:** fixed glass header with the full nav visible at every width —
+  on phones the six links (Shop / Gallery / Process / Commission / Farhad /
+  Contact) wrap into their own row under the logo instead of hiding behind a
+  button — plus a metallic scroll-progress line and a full-screen glass
+  Index (Nº 00–10) for the whole site map.
+- **No overlays:** there is no timed popup, no exit-intent trap, no caption
+  sitting on top of a photograph. The Paradise List is a section on the page,
+  not an interruption.
 - **Motion is the drawing:** the hero line draws itself on arrival; the
-  Process page's artwork draws and undraws with the visitor's scroll; a
+  Process artwork draws and undraws with the visitor's scroll; a
   hold-to-draw interaction on the product page; pointer-tracked light on
   tiles and panels. Task pages (cart, contact, FAQ) stay calm.
   `prefers-reduced-motion` is honored throughout.
 
 ## 3. The pages
-- **index — The Gate.** Full-viewport hero: the iridescent line draws itself
-  under "Paradise is one unbroken line." Then the line worn (full-bleed
-  photograph), three garments, the color-series feature, the Commission, a
-  sideways rail of prints, and the Paradise List.
+- **index.** Full-viewport hero: the metal line draws itself under "Paradise
+  is one unbroken line." Then the line worn (full-bleed photograph, caption
+  below it — never on it), three garments, the one color series (Empathy in
+  Color), the Commission, a sideways rail of prints, the Paradise List.
 - **shop — The Wall.** All products as one sideways-travelling wall of tiles
-  (price always printed beside the name), a Commission panel, then a compact
-  Index table of every piece for fast finding. Two honest notes: the Paradise
-  Heart Hoodie has no verified photograph anywhere, so it is listed without
-  one rather than dressed in another hoodie's picture; "Flow of Serenity"
-  stays off the wall (it was listed at $0 on the old site).
+  (price always beside the name), a Commission panel, then a compact Index
+  table of every piece. Two honest notes: the Paradise Heart Hoodie has no
+  verified photograph anywhere, so it is listed without one rather than
+  dressed in another hoodie's picture; "Flow of Serenity" stays off the wall
+  (it was listed at $0 on the old site).
 - **product — Golden Heart Hoodie.** Before/after front↔back slider, size
   chips with a live readout, total-cost honesty lines, provenance table,
   hold-to-draw, an unhidden zero-reviews panel.
 - **print — Heart of Paradise.** Artwork first, full width; the five-size
   ladder ($200/$220/$250/$300/$350) as chips that update the price readout;
   "frame not included" stated plainly.
-- **gallery.** Sixteen works in four series chapters, alternating dark and
-  bone rooms — including a printed correction: two works shared one
-  photograph on the old site; every tile here was checked against its own
-  file, and Dancing with Gratitude is named without a tile until it has a
-  photograph of its own.
-- **commission.** The $300 hand-drawn cap: glow hero, itemized inclusions
-  and money terms ($100 deposit / $200 before signing) printed before any
-  form, a working configurator (cap colour swaps the real photo, motif
-  re-draws, word + initials feed a live summary), the 7 steps Day 0 → ships.
+- **gallery.** Sixteen works in four series chapters — including a printed
+  correction: two works shared one photograph on the old site; every tile
+  here was checked against its own file, and Dancing with Gratitude is named
+  without a tile until it has a photograph of its own.
+- **commission.** The $300 hand-drawn cap: itemized inclusions and money
+  terms ($100 deposit / $200 before signing) printed before any form, a
+  working configurator (cap colour swaps the real photo, motif re-draws,
+  word + initials feed a live summary), the 7 steps Day 0 → ships.
 - **kit.** The $39 draw-your-first-paradise kit: contents, a free tile on
   the Process page first, an honestly empty "wall of other people's lines."
   The kit is not a live store product yet, so its button routes to the
@@ -86,15 +91,25 @@ Real image dimensions + lazy loading below the fold. Note: rankings accrue
 to the real domain only when this is deployed at anotherdayinparadise.la.
 
 ## 6. Verification performed on this build
-- Every image URL on every page curl-checked: all return 200 (22 unique).
-- Every href/src machine-checked against the verified source corpus: zero
-  invented URLs; the QR-code graphic that the old site used as the $300
-  cap's photo appears nowhere.
-- Local browser QA: zero horizontal overflow on all 14 pages at 1440px and
-  390px; interaction smoke tests pass (menu + Esc, scroll progress, size
-  chips, before/after slider, print price readout, commission configurator,
-  draw-along canvas, rail progress, contact routing).
-- Live verification at the pinned link follows in the commit history below.
+- Every page was screenshot-checked by eye at phone width (390px) AND
+  desktop width (1440px) with the real production fonts (Space Grotesk +
+  Inter) loaded — not fallback fonts. All 14 pages, both widths.
+- Element-level overflow scan: no element extends past the viewport on any
+  page at either width (the intentional nav row and product rails scroll
+  inside their own containers).
+- Interaction smoke tests pass: menu + Esc, scroll progress, size chips,
+  before/after slider, print price readout, commission configurator,
+  draw-along canvas, rail progress, contact routing, mobile nav visibility.
+- Timed-popup test: after 17 seconds on the home page, nothing appears —
+  the popup does not exist in this build.
+- Two real defects were caught by this process and fixed before delivery:
+  class-based two-column layouts not stacking on phones, and a product-page
+  grid column forced to image width (1256px) by a missing min-width rule.
+- Every image URL returns 200 (22 unique); every href/src machine-checked
+  against the verified source corpus — zero invented URLs; the QR-code
+  graphic the old site used as the $300 cap's photo appears nowhere.
+- Live verification at the pinned link (desktop + phone widths) follows in
+  the delivery note.
 
 ## 7. Open gaps (need Farhad's / Robert's input — unchanged from prior work)
 a. Commission money split: these pages promise $100 deposit + $200 balance;
