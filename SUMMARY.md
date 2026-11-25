@@ -157,27 +157,34 @@ mid, and desktop widths.
   verification and the sitemap submitted there); a mirror link is for review
   and sharing, not for ranking.
 
-## 8. Addendum — Noir Champagne (the new color scheme)
+## 9. Addendum — the Black / White / Glass build (2026-11-24, late)
 
-Robert rejected the newsprint/riso palette and asked for sexy. A second deep-research
-pass (luxury fashion/beauty design — palettes, glass, metal, type, motion; report kept
-with the project notes) produced the lead direction **Noir Champagne**, now applied to
-all 14 pages:
+A full visual rebuild on top of the same content, store wiring, and SEO layer.
+Nothing about what the site says or sells changed; everything about how it looks did.
 
-- **Palette:** warm near-black `#111111` world; ivory `#F8F5EF` commerce surfaces;
-  champagne `#E8D6B3` and antique gold `#C9A84C` used only as gradient, hairline, and
-  glow — never flat fill; bordeaux `#4A1420` for the Commission; lifted plum and rouge
-  for accents. The old red/cobalt/newsprint scheme is gone everywhere, including
-  inline styles.
-- **Type:** Bodoni Moda display serif (the Didot fashion voice), Jost for UI and
-  labels, Cormorant Garamond italic for the romantic copy. Anton/Courier/Libre
-  Franklin are out.
-- **Materials:** smoked noir glass header, menu, and popup (blur + saturation,
-  champagne hairline, top specular); gold-foil wordmark and foil italic hero words
-  (animated at a slow 7–8s — fast shimmer reads cheap); champagne halo behind the
-  hero; glowing wine/plum buttons; product cards lift with a slow image zoom and a
-  champagne glow; motion slowed to a 1s expo ease throughout, reduced-motion safe.
-- **Verified:** screenshot pass over the home, shop, product, gallery, commission,
-  and menu at desktop and phone widths, plus a full overflow re-scan — after one
-  real fix (page heads that sat directly on the old paper background now sit in the
-  noir world with ivory type, as the research's two-worlds pattern prescribes).
+**The system:** the art is black line on white, so the site is black glass and white
+light. Bebas Neue display type at full scale, Archivo body, Space Grotesk labels.
+Sections are full-bleed bands alternating white, gallery grey, and black — no paper,
+no poster boxes, no crop marks. Gold exists only as animated metal foil: the wordmark
+is chrome, prices and stamps are gold foil, primary buttons are gold metal pills with
+a glow. Frosted glass throughout: the fixed header, the full-screen menu, the hero
+panel, the product cards on dark bands, the list popup. Product cards tilt toward the
+pointer with light following the hand. A visible navigation bar (Shop / Gallery /
+Process / Commission / Farhad / Contact) now sits in the header on every page — the
+full Index menu remains behind the gold button.
+
+**The home page** opens on a full-screen photograph with the headline in a smoked-
+glass panel and the $175 hoodie one tap away; the process film-strip, price ladder,
+Drop, gift/commission story, and Paradise List follow as before, restyled.
+
+**Verification for this build:** every page screenshot-checked at desktop and phone
+widths; zero horizontal overflow on all 14 pages at 390px and 1440px; interaction
+tests passed (menu open/close, size chips, before/after slider, commission summary,
+draw-your-own tile canvas); a full read-through audit of every inline style in all
+14 files against the new stylesheet, with the clashes found fixed (legacy colour
+variables resolved, white text removed from light sections, gallery captions and
+links back on-palette); every image address on the site re-checked against the live
+store — 24 of 24 return 200 — and every external link re-verified.
+
+Note: `preview.html` from an earlier one-page experiment remains in the repo,
+unlinked and superseded by this build.
