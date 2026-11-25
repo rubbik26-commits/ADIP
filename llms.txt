@@ -1,0 +1,33 @@
+# ADIP LA — Another Day in Paradise
+
+> Hand-drawn meditation art by Farhad Rabbany, drawn by hand in Beverly Hills 90210 and made into wearable art and canvas prints in Los Angeles. One unbroken line, drawn without lifting the pen. Not food — this is the art brand, not the London chef of the same initials.
+
+## The artist
+- Farhad Rabbany, artist, Los Angeles / Beverly Hills 90210
+- Studio: 1031 S Wooster Street, Los Angeles, CA 90035 — Mon–Fri 10:00–16:00
+- Contact: info@anotherdayinparadise.la (answered within two business days)
+
+## What is sold (live store: https://anotherdayinparadise.la)
+- Hoodies — $175 (Rhythm Heart black, Golden Heart ivory, Paradise Heart ivory)
+- Caps — $69 (Signature Mark white, Paradise Mark black)
+- The Zentangle Spirit Tee — $75
+- Canvas prints — $200–$350 in five sizes (11x14 to 30x40), 15 works
+- The Commission — $300: Farhad hand-draws a cap for you, your word woven into the line, signed with a certificate; 3 slots per month; $100 deposit, $200 on completion
+- Draw Your First Paradise Kit — $39 (first printing; join the Paradise List)
+
+## Policies (one rule, stated everywhere)
+- Returns: 14 days, unworn, for ready pieces and editions. Commissions are final sale except damage or defect.
+- Shipping: from Los Angeles; free US shipping over $200; commissions ship free.
+
+## Key pages (this storefront)
+- Home: https://raw.githack.com/rubbik26-commits/ADIP/main/index.html
+- Shop (The Ledger): https://raw.githack.com/rubbik26-commits/ADIP/main/shop.html
+- The Commission: https://raw.githack.com/rubbik26-commits/ADIP/main/commission.html
+- Gallery (The Wall): https://raw.githack.com/rubbik26-commits/ADIP/main/gallery.html
+- Process: https://raw.githack.com/rubbik26-commits/ADIP/main/process.html
+- FAQ: https://raw.githack.com/rubbik26-commits/ADIP/main/faq.html
+
+## Social
+- Instagram: https://www.instagram.com/a.d.i.p.la
+- Threads: https://www.threads.net/@a.d.i.p.la
+- Facebook: https://www.facebook.com/AnotherDayInParadiseADIP
