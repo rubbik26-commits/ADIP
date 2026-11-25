@@ -3,7 +3,7 @@
    Bag: localStorage "adipbag3". Orders: localStorage "adiporders3". */
 (function(){
 "use strict";
-var P = window.ADIP_PRODUCTS || [];
+var P = (window.ADIP_PRODUCTS || []).concat(window.ADIP_COLLAB || []);
 var byId = {}; P.forEach(function(p){ byId[p.id]=p; });
 var SIZE_ORDER = ["S","M","L","XL"];
 function money(n){ return "$" + n.toLocaleString("en-US"); }
@@ -45,7 +45,8 @@ function priceText(p){
 function tile(p){
   return '<article class="tile"><a href="product.html?id=' + p.id + '" style="text-decoration:none">' +
     '<span class="mat" style="display:block"><img src="' + p.images[0] + '" alt="' + p.name + ' — by Farhad Rabbany" loading="lazy" width="900" height="900"></span>' +
-    '<span class="tilemeta"><span class="tilename">' + p.name + '</span><span class="tileprice">' + priceText(p) + '</span></span></a>' +
+    '<span class="tilemeta"><span class="tilename">' + p.name + '</span><span class="tileprice">' + priceText(p) + '</span></span>' +
+    (p.collab ? '<span class="tilebadge">Limited Edition · Skyline × ADIP</span>' : '') + '</a>' +
     (p.type==="request"
       ? '<a class="tileadd" href="product.html?id=' + p.id + '">Ask the studio</a>'
       : '<button class="tileadd" data-add="' + p.id + '">' + (p.type==="sized" || p.type==="print" ? "Choose options" : "Add to bag — " + priceText(p)) + '</button>') +
@@ -54,7 +55,7 @@ function tile(p){
 function paintShop(){
   var grid = document.querySelector("[data-shopgrid]"); if (!grid) return;
   var f = grid.getAttribute("data-filter") || "all";
-  var list = P.filter(function(p){ return f==="all" || p.cat===f || (f==="under100" && p.price>0 && p.price<100); });
+  var list = P.filter(function(p){ return f==="all" || p.cat===f || (f==="collab" && !!p.collab) || (f==="under100" && p.price>0 && p.price<100); });
   grid.innerHTML = list.map(tile).join("");
   var c = document.querySelector("[data-shopcount]");
   if (c) c.textContent = list.length + (list.length===1 ? " piece" : " pieces");
@@ -132,7 +133,7 @@ function paintProduct(){
     '<div class="galwrap"><div class="mat galmain"><img data-main src="' + p.images[0] + '" alt="' + p.name + ' — by Farhad Rabbany" width="1100" height="1100"></div>' +
     '<div class="galthumbs">' + thumbs + '</div>' +
     '<p class="mono" style="color:var(--mut);font-size:12px;letter-spacing:.14em;margin-top:12px">TAP THE LARGE PHOTO FOR THE LIGHTBOX · ' + p.images.length + (p.images.length===1 ? " PHOTO" : " PHOTOS") + '</p></div>' +
-    '<div class="pdpinfo"><p class="kick">' + (p.cat==="prints" ? "Canvas print · Hand Drawing" : p.cat==="hoodies" ? "Hoodie · Wearable art" : p.cat==="caps" ? "Cap · Wearable art" : "T-Shirt · Wearable art") + '</p>' +
+    '<div class="pdpinfo"><p class="kick">' + (p.collab ? "Skyline × ADIP · Limited Edition Collaboration" : p.cat==="prints" ? "Canvas print · Hand Drawing" : p.cat==="hoodies" ? "Hoodie · Wearable art" : p.cat==="caps" ? "Cap · Wearable art" : "T-Shirt · Wearable art") + '</p>' +
     '<h1 class="pdpname"><span class="seal"></span>' + p.name + '</h1>' +
     '<p class="pdpprice">' + priceLine + '</p>' +
     '<p class="pdpdesc">' + p.desc + '</p>' + commBlock +

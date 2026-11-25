@@ -55,3 +55,6 @@ Real card capture needs the studio's own payment account (PayPal /
 WooPayments, as on his live store). Until Farhad provides it, checkout
 records and confirms orders on screen and the studio confirms payment by
 email. Stated on the checkout page itself.
+
+## Update 2026-11-25 — Skyline × ADIP Limited Edition Collaboration
+Added at Robert's direction: collaboration.html + collab.js — seven of Farhad's pieces (3 hoodies, 3 caps, tee) recreated with Skyline branding: his designs untouched, the New York skyline drawn in his own line style inside a circle, SKYLINE PROPERTIES beneath it. Real prices ($175/$69/$75/$300). The collab products merge into the shop (All = 30 pieces) with a Limited Edition filter chip and badge, full product pages (galleries, sizes, bag, checkout), a home-page panel + rail, nav and footer links, sitemap and llms.txt entries, and ItemList JSON-LD on the collaboration page. Collab photographs are AI-edited recreations of the studio's product photos, embedded in collab.js as data URIs (the repo push is text-only). Verified locally end-to-end before push: 7 tiles, filters, PDP gallery/size/add-to-bag, cart math ($175 + $12 = $187), phone layout, no horizontal scroll.
