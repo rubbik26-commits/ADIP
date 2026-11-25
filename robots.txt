@@ -3,14 +3,9 @@ Allow: /
 
 User-agent: GPTBot
 Allow: /
-
 User-agent: ClaudeBot
 Allow: /
-
 User-agent: PerplexityBot
 Allow: /
-
 User-agent: Google-Extended
 Allow: /
-
-Sitemap: https://raw.githack.com/rubbik26-commits/ADIP/main/sitemap.xml

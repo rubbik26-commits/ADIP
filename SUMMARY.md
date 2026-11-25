@@ -1,68 +1,56 @@
-# SUMMARY — the ADIP store build (2026-11-25)
+# SUMMARY — the ADIP recreation (2026-11-25)
 
-## What was asked, in Robert's words
-A mockup that looks nothing like the existing site — a redesign and a rebrand —
-in the repository Robert created, as **a functioning online store**. The earlier
-builds failed this twice over: they kept the old site's page-for-page skeleton,
-and they were skins whose buy buttons, checkout and cart all linked back to the
-old WooCommerce site. This build fixes both, and claims nothing beyond what was
-verified below.
+## The order, in Robert's words
+Start from the beginning. Take the website he gave (anotherdayinparadise.la),
+recreate it as a mockup that looks completely different, with every image and
+100% functionality. No shortcuts.
 
-## What this build is
-- **A store, not a skin.** Catalogue (`products.js`), product pages, bag,
-  totals, shipping rule, checkout and order confirmation all run inside this
-  repo (`store.js`). No page links to anotherdayinparadise.la to buy, check
-  out, or view a cart. The only old-domain assets are Farhad's own product
-  photographs (his media library is the only place those files exist; they
-  move with the store when it gets hosting).
-- **A new structure.** 8 pages with a storefront's architecture — one dynamic
-  product page serves all 23 products; the old site's 14-page mirror is gone.
-  The 8 leftover page names from the previous mockup are redirect doors.
-- **The approved design.** Glass/metal/glow/shine on black and white, Space
-  Grotesk + Inter, the self-drawing line as the one signature motion, visible
-  navigation (Shop / Commission / Story / FAQ + Bag, all visible at phone
-  width without opening a menu), no popup anywhere.
+## What was built
+A recreation of the entire site in a new design world — "the dark gallery":
+warm-black walls, art on lit off-white mats, a vermillion seal accent,
+Archivo + Space Mono. 17 pages mapping the original's full page set (Home,
+Shop, Product, Gallery, About, FAQ, Contact, Cart, Checkout, My Account,
+Commission, Shipping, Returns, Terms, Privacy, Cookies, Accessibility).
 
-## The catalogue (verified, not copied from the old skin)
-Rebuilt from the WooCommerce product table: 23 sellable pieces with real
-names, prices and main photographs — including 15 canvas prints at the real
-$200–$350 size ladder. Two evidence-driven changes from earlier builds:
-(1) the Paradise Heart Hoodie **does** have photographs (July uploads) — the
-"no photo" claim from the first crawl is retired; (2) ten print names in the
-earlier builds were invented — replaced with the products' real titles and
-their real main images. Every image URL in the build was curl-verified (200);
-one 404 (a kit photo that does not exist) was caught and the kit became an
-honest spec card instead.
+## Fidelity to the original (the part that is NOT redesigned)
+- Catalogue extracted from the live WooCommerce product table: all 23
+  products, real names, real prices, real options (apparel sizes; the canvas
+  ladder 11x14 $200 / 16x20 $220 / 18x24 $250 / 24x36 $300 / 30x40 $350 taken
+  from the products' own option strings), and real description copy on the
+  product pages.
+- Every image: all 65 product photos (galleries of 4–10 on apparel) plus the
+  site's art and homepage shelf photography — 77 unique URLs, each
+  curl-verified 200 before the push. Four 12–27 MB studio props use the
+  site's own mid-size renditions for speed.
+- His homepage hero (the dictionary definition of "inspiration") and his
+  About/Contact texts are kept and restaged; his eight hoodie FAQ answers
+  are kept verbatim in substance and the page is completed for the rest of
+  the store; policy pages carry the documented substance of his policies.
+- Two of the original's own contradictions are resolved openly: returns are
+  one 14-day rule everywhere (his FAQ said 14, his returns page said 30),
+  and Flow of Serenity — listed at $0 — is price-on-request instead of
+  carrying an invented price. The accessibility page's "[Insert Client
+  Email]" placeholder is filled with the real address.
 
-## Verification (all observed, none asserted)
-- Local QA with the **real fonts loaded** (downloaded woff2, local @font-face):
-  all 8 pages at 390px and 1440px — no page-level horizontal scroll, no
-  element overflow (the hero line's 3px SVG bleed is inside its viewBox),
-  fonts confirmed loaded.
-- **Full purchase flow, executed end-to-end** at phone width: shop filters
-  (23 all / 15 wall / 4 under $100) → cap added from the grid → hoodie PDP
-  (size M × 2 = $350) → print PDP (24×36 = $300) → commission configured
-  (word HOPE) and reserved → cart showed all four lines, goods $819, free
-  shipping, total $819 → checkout form → **order ADIP-2559 confirmed on
-  screen**, bag cleared to Bag (0).
-- Screenshots of every page at both widths were read by eye; three defects
-  found and fixed before push: tile name/price ran together (no CSS existed
-  for the tile meta), the Bag link was hidden on phones (now visible in the
-  header at 390px and 360px), small-phone header height (padding rule added
-  ≤374px).
-- Push read-back: every file compared byte-for-byte against
-  raw.githubusercontent.com after the push (see the delivery note for the
-  commit). Live verification at the pinned link follows the same flow test.
+## Verification (observed, not asserted)
+- Local QA with the real fonts loaded (Archivo + Space Mono woff2, local
+  @font-face): all 17 pages at 390px and 1440px — fonts confirmed, no
+  page-level horizontal scroll, no element overflow (one rail-bleed found
+  and clipped).
+- Full functionality executed at phone width: shop filters (23 / 16 prints /
+  3 hoodies), product gallery switching across all 10 tee photos, lightbox
+  open/step/close, canvas ladder repricing to $350 at 30x40, the cap
+  configurator (word PARADISE + Waves) reserving its $100 deposit, Flow of
+  Serenity showing price-on-request with no buy button, cart math
+  ($350 + $100 = $450, free shipping), checkout → order ADIP-6744 confirmed,
+  the order appearing on the Account page, and the contact form composing.
+- Screenshots of every page at both widths read by eye before the push.
+- After the push: every file read back byte-identical from
+  raw.githubusercontent.com, then the live pinned link re-verified in a
+  real browser (see delivery note for the commit).
 
-## The one remaining wire (stated in the open, on the checkout page too)
-Real card capture needs the studio's own payment account (Farhad's Stripe or
-PayPal). Until he provides it, checkout records the order and confirms it on
-screen, and the studio confirms payment by email before shipping; no card is
-charged by the page. This is the single step that cannot be completed from
-this side — it needs Farhad's account, nobody else's.
-
-## Remaining gaps (need Farhad / Robert)
-Payment account (above); Flow of Serenity's $0 price on the old store;
-TikTok/Pinterest/YouTube don't exist yet; Meta tagging needs Farhad's logins;
-GitHub Pages toggle is Robert's one click in Settings; deploying at
-anotherdayinparadise.la when accepted + his hosting logins arrive.
+## The one remaining wire
+Real card capture needs the studio's own payment account (PayPal /
+WooPayments, as on his live store). Until Farhad provides it, checkout
+records and confirms orders on screen and the studio confirms payment by
+email. Stated on the checkout page itself.
