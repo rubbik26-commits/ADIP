@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>ADIP.LA — After Dark (design preview)</title>
+<meta name="description" content="Design preview: Another Day in Paradise by Farhad Rabbany — hand-drawn meditation art, Beverly Hills 90210.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23100D0B'/%3E%3Cpath d='M6 22c4-9 7-13 10-13s6 4 10 13' stroke='%23C9A84C' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,400;0,600;0,800;1,400&family=Permanent+Marker&display=swap');
+:root{--noir:#100D0B;--noir2:#181310;--bordeaux:#4A1420;--wine:#7A1E2B;--midnight:#252B52;--champagne:#E8D6B3;--gold:#C9A84C;--ivory:#F8F5EF;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--ivory);font-family:'Libre Franklin',sans-serif;font-size:17px;line-height:1.55;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.kick{font-family:'Courier Prime',monospace;font-weight:700;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--champagne)}
+.mono{font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.disp{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.94;font-weight:400}
+.foil{background:linear-gradient(108deg,#7a4a08 0%,#f2c15d 18%,#fff4b8 24%,#b87014 36%,#f6d66d 51%,#8e560b 68%,#fff0a2 76%,#c98218 100%);background-size:230% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 7s ease-in-out infinite alternate}
+@keyframes foil{from{background-position:0% 0}to{background-position:100% 0}}
+.btn{display:inline-block;font-family:'Courier Prime',monospace;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:17px 30px;border:1px solid rgba(232,214,179,.55);background:linear-gradient(160deg,#7A1E2B,#4A1420);color:#FFF8EC;box-shadow:0 16px 34px rgba(0,0,0,.45),0 0 26px rgba(122,30,43,.35);position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 22px 44px rgba(0,0,0,.5),0 0 38px rgba(201,168,76,.35)}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:left .9s var(--ease)}
+.btn:hover::after{left:130%}
+.btn.goldb{background:linear-gradient(135deg,#C9A84C,#E8D6B3 55%,#B08D57);color:#171207;border-color:rgba(232,214,179,.7);box-shadow:0 16px 34px rgba(0,0,0,.45),0 0 26px rgba(201,168,76,.4)}
+.btn.ghost{background:rgba(248,245,239,.05);color:var(--ivory);border-color:rgba(232,214,179,.4);box-shadow:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+[data-rv]{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+[data-rv].on{opacity:1;transform:none}
+/* header */
+header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(22,17,13,.86),rgba(13,10,8,.82));-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border-bottom:1px solid rgba(232,214,179,.3);box-shadow:inset 0 1px 1px rgba(255,251,197,.22)}
+.hbar{display:flex;align-items:center;gap:26px;padding:13px 28px;max-width:1400px;margin:0 auto}
+.logo{font-family:'Anton',sans-serif;font-size:29px;letter-spacing:.14em;text-decoration:none;background:linear-gradient(135deg,#d4af37 0%,#fffbc5 12%,#926900 28%,#eed585 42%,#fffbc5 50%,#d4af37 62%,#624300 76%,#fffbc5 90%,#d4af37 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 8s ease-in-out infinite alternate}
+.logo small{display:block;font-family:'Courier Prime',monospace;font-size:9.5px;letter-spacing:.34em;color:var(--champagne);-webkit-text-fill-color:var(--champagne);margin-top:1px}
+.hissue{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.2em;color:#CBBfa5;text-transform:uppercase}
+.hbar .sp{flex:1}
+.bag{font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--ivory);text-decoration:none;border:1px solid rgba(232,214,179,.45);padding:10px 16px;text-transform:uppercase}
+#menubtn{font-family:'Courier Prime',monospace;font-weight:700;font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;background:linear-gradient(135deg,#C9A84C,#E8D6B3 55%,#B08D57);color:#171207;border:0;padding:13px 22px;cursor:pointer;box-shadow:0 0 22px rgba(201,168,76,.45)}
+/* menu */
+#menu{position:fixed;inset:0;z-index:80;background:linear-gradient(180deg,rgba(30,34,74,.92),rgba(14,16,36,.94));-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);display:none;overflow:auto;padding:26px 28px 60px}
+#menu.open{display:block}
+#menu .mclose{float:right;background:var(--ivory);color:var(--noir);border:0;font-family:'Courier Prime',monospace;font-weight:700;letter-spacing:.14em;padding:11px 18px;cursor:pointer;text-transform:uppercase}
+#menu .mhead{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.26em;color:var(--champagne);text-transform:uppercase;margin:16px 0 8px}
+#menu a.mrow{display:flex;align-items:baseline;gap:22px;text-decoration:none;color:var(--ivory);padding:13px 10px;border-bottom:1px solid rgba(232,214,179,.22)}
+#menu a.mrow:hover{background:rgba(232,214,179,.08);color:var(--champagne)}
+#menu .mno{font-family:'Courier Prime',monospace;font-size:12px;color:var(--gold);letter-spacing:.1em}
+#menu .mname{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(32px,5.4vw,58px);line-height:1}
+#menu .mnote{margin-left:auto;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.14em;color:#B9BEEA;text-transform:uppercase;text-align:right}
+/* hero */
+.hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;background:#0B0908 url('https://anotherdayinparadise.la/wp-content/uploads/2026/07/Models-2-scaled-1.jpg') center 22%/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,13,11,.34) 0%,rgba(16,13,11,.06) 34%,rgba(16,13,11,.90) 82%),radial-gradient(ellipse 55% 42% at 18% 88%,rgba(122,30,43,.5),transparent 70%)}
+.hero .inner{position:relative;width:100%;padding:120px 0 54px}
+.plaque{max-width:880px;background:linear-gradient(180deg,rgba(26,20,16,.58),rgba(13,10,8,.66));-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(232,214,179,.32);box-shadow:0 34px 70px rgba(0,0,0,.55),inset 0 1px 1px rgba(255,251,197,.3);padding:38px 40px 34px}
+.plaque h1{font-size:clamp(62px,10.5vw,158px);margin:14px 0 18px}
+.plaque .lede{font-size:19px;line-height:1.55;color:#EFE7D4;max-width:56ch}
+.hrow{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:28px}
+.chip{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);border:1px solid rgba(232,214,179,.4);background:rgba(248,245,239,.07);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:14px 20px}
+.chip b{color:var(--champagne)}
+.hero .ship{margin-top:20px;color:#CFC2A4}
+/* ticker */
+.ticker{background:linear-gradient(90deg,#571A29,#7A1E2B 50%,#571A29);border-top:1px solid rgba(232,214,179,.35);border-bottom:1px solid rgba(232,214,179,.35);overflow:hidden;padding:13px 0}
+.ticker .track{display:flex;width:max-content;animation:tick 46s linear infinite}
+.ticker span{font-family:'Anton',sans-serif;font-size:21px;letter-spacing:.12em;text-transform:uppercase;color:#F3E9D9;white-space:nowrap;padding-right:18px}
+.ticker i{font-style:normal;color:var(--gold)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ladder */
+.ladder{background:linear-gradient(170deg,#2A3060,#141733 70%);padding:86px 0 92px;border-bottom:1px solid rgba(232,214,179,.25)}
+.ladder h2{font-size:clamp(44px,6.5vw,92px);margin:12px 0 8px}
+.ladder .sub{color:#C6CBF0;max-width:60ch}
+.lrow2{display:grid;grid-template-columns:1fr auto auto;gap:26px;align-items:center;text-decoration:none;padding:24px 10px;border-bottom:1px solid rgba(232,214,179,.22);transition:background .5s var(--ease)}
+.lrow2:first-of-type{border-top:1px solid rgba(232,214,179,.22);margin-top:38px}
+.lrow2:hover{background:rgba(232,214,179,.06)}
+.lrow2 .nm{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(24px,3.2vw,40px);line-height:1}
+.lrow2 .nt{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.14em;color:#B9BEEA;text-transform:uppercase;text-align:right}
+.lrow2 .pr{font-family:'Anton',sans-serif;font-size:clamp(38px,5vw,68px);color:var(--champagne);line-height:1;min-width:170px;text-align:right}
+/* drop */
+.drop{padding:92px 0 96px;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(201,168,76,.12),transparent 70%),var(--noir)}
+.drop .dhead{display:flex;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:42px}
+.drop h2{font-size:clamp(46px,7vw,100px)}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gcard{position:relative;background:rgba(248,245,239,.05);border:1px solid rgba(232,214,179,.25);overflow:hidden;text-decoration:none;transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.gcard:hover{transform:translateY(-7px);box-shadow:0 34px 64px rgba(0,0,0,.6),0 0 40px rgba(201,168,76,.22)}
+.gcard::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,244,200,.20),transparent 55%);opacity:0;transition:opacity .4s;pointer-events:none}
+.gcard:hover::after{opacity:1}
+.gcard .ph{aspect-ratio:4/4.6;overflow:hidden}
+.gcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.gcard:hover .ph img{transform:scale(1.07)}
+.gcard .info{display:flex;align-items:center;gap:14px;padding:18px 20px;background:linear-gradient(180deg,rgba(24,19,16,.72),rgba(13,10,8,.85));-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid rgba(232,214,179,.25)}
+.gcard .nm{font-weight:800;font-size:18.5px;line-height:1.2}
+.gcard .mt{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.14em;color:#CFC2A4;text-transform:uppercase;margin-top:3px}
+.gcard .pr{margin-left:auto;font-family:'Anton',sans-serif;font-size:30px;color:var(--champagne)}
+.drop .more{margin-top:36px;text-align:center}
+/* commission */
+.comm{background:linear-gradient(155deg,#571A29,#2A0A12 75%);padding:96px 0;border-top:1px solid rgba(232,214,179,.3);border-bottom:1px solid rgba(232,214,179,.3)}
+.comm .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.comm .grid>*,.dgrid>*,.lrow2>*{min-width:0}
+.comm h2{font-size:clamp(48px,7vw,104px);margin:14px 0 18px}
+.comm p{color:#F0E4CE;max-width:52ch}
+.comm .terms{margin-top:20px;color:#D9A7B4}
+.comm .fig{position:relative}
+.comm .fig img{width:100%;border:1px solid rgba(232,214,179,.55);box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(201,168,76,.25)}
+.stamp{position:absolute;top:-24px;right:-14px;font-family:'Permanent Marker',cursive;font-size:19px;text-transform:uppercase;color:#241A02;background:linear-gradient(108deg,#7a4a08 0%,#f2c15d 18%,#fff4b8 24%,#b87014 36%,#f6d66d 51%,#8e560b 68%,#fff0a2 76%,#c98218 100%);background-size:230% 100%;animation:foil 7s ease-in-out infinite alternate;border:2px solid #7A580C;padding:8px 16px;transform:rotate(5deg);box-shadow:0 14px 30px rgba(0,0,0,.45)}
+/* list */
+.listb{padding:96px 0;text-align:center;background:radial-gradient(ellipse 55% 60% at 50% 110%,rgba(37,43,82,.55),transparent 70%),#0B0908}
+.listb h2{font-size:clamp(48px,8vw,116px);margin:12px 0 14px}
+.listb p{color:#D8CCAF;max-width:58ch;margin:0 auto}
+.lform{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.lform input{font-family:'Courier Prime',monospace;font-size:14px;letter-spacing:.08em;background:rgba(248,245,239,.07);border:1px solid rgba(232,214,179,.45);color:var(--ivory);padding:17px 22px;min-width:min(360px,86vw)}
+.lform input::placeholder{color:#A99B7C}
+.fine{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.12em;color:#8E8272;text-transform:uppercase;margin-top:18px}
+/* footer */
+footer{background:#0B0908;border-top:1px solid rgba(232,214,179,.3);padding:60px 0 70px;margin-top:0}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px}
+footer .fh{font-family:'Courier Prime',monospace;font-weight:700;font-size:11.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+footer a{display:block;color:#CFC2A4;text-decoration:none;font-size:14.5px;padding:3px 0}
+footer a:hover{color:var(--champagne)}
+footer .fl{font-family:'Anton',sans-serif;font-size:30px;letter-spacing:.12em;color:var(--ivory)}
+footer .fine{margin-top:34px}
+/* popup */
+#cap{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(10,8,7,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#cap.show{display:flex}
+#cap .box{max-width:520px;width:calc(100% - 40px);background:linear-gradient(180deg,rgba(30,24,19,.88),rgba(15,12,10,.92));-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(232,214,179,.4);box-shadow:0 40px 90px rgba(0,0,0,.65),inset 0 1px 1px rgba(255,251,197,.3);padding:36px 36px 30px;position:relative}
+#cap h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:40px;line-height:1;margin:10px 0}
+#cap .x{position:absolute;top:12px;right:14px;background:none;border:0;color:var(--champagne);font-size:22px;cursor:pointer}
+#cap input{width:100%;font-family:'Courier Prime',monospace;font-size:14px;background:rgba(248,245,239,.08);border:1px solid rgba(232,214,179,.45);color:var(--ivory);padding:15px 18px;margin:16px 0 12px}
+@media(max-width:900px){.dgrid{grid-template-columns:1fr}.comm .grid{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr 1fr}.lrow2{grid-template-columns:1fr auto}.lrow2 .nt{display:none}.plaque{padding:28px 24px}.hissue{display:none}}
+@media(prefers-reduced-motion:reduce){.foil,.logo,.stamp{animation:none}.ticker .track{animation:none}[data-rv]{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="hbar">
+  <a class="logo" href="index.html">ADIP.LA<small>BY FARHAD RABBANY</small></a>
+  <span class="hissue">Issue 03 — The Drop · Los Angeles</span>
+  <span class="sp"></span>
+  <a class="bag" href="cart.html">Bag (2)</a>
+  <button id="menubtn" aria-label="Open the index">Index +</button>
+ </div>
+</header>
+
+<nav id="menu" aria-label="Site index">
+ <button class="mclose" id="menuclose">Close ×</button>
+ <p class="mhead">The whole site, as an index — like a catalogue raisonné</p>
+ <a class="mrow" href="index.html"><span class="mno">Nº 00</span><span class="mname">Front Page</span><span class="mnote">Start here</span></a>
+ <a class="mrow" href="shop.html"><span class="mno">Nº 01</span><span class="mname">The Ledger — Shop</span><span class="mnote">23 pieces · numbered</span></a>
+ <a class="mrow" href="commission.html"><span class="mno">Nº 02</span><span class="mname">The Commission</span><span class="mnote">$300 · 3 slots a month</span></a>
+ <a class="mrow" href="kit.html"><span class="mno">Nº 03</span><span class="mname">The $39 Kit</span><span class="mnote">Draw your first paradise</span></a>
+ <a class="mrow" href="gallery.html"><span class="mno">Nº 04</span><span class="mname">The Wall — Gallery</span><span class="mnote">16 works · 4 series</span></a>
+ <a class="mrow" href="process.html"><span class="mno">Nº 05</span><span class="mname">Process</span><span class="mnote">Watch · then draw</span></a>
+ <a class="mrow" href="watch.html"><span class="mno">Nº 06</span><span class="mname">Watch</span><span class="mnote">The formats</span></a>
+ <a class="mrow" href="journal.html"><span class="mno">Nº 07</span><span class="mname">Journal</span><span class="mnote">Notes from the table</span></a>
+ <a class="mrow" href="about.html"><span class="mno">Nº 08</span><span class="mname">Farhad</span><span class="mnote">The man · the studio</span></a>
+ <a class="mrow" href="faq.html"><span class="mno">Nº 09</span><span class="mname">No Fine Print — FAQ</span><span class="mnote">Shipping · returns · sizing</span></a>
+ <a class="mrow" href="contact.html"><span class="mno">Nº 10</span><span class="mname">Contact</span><span class="mnote">Write to the studio</span></a>
+</nav>
+
+<section class="hero">
+ <div class="inner">
+  <div class="wrap">
+   <div class="plaque" data-rv>
+    <p class="kick">Another Day in Paradise — hand-drawn in Beverly Hills 90210</p>
+    <h1 class="disp">Drawn.<br>Not<br><span class="foil">Printed.</span></h1>
+    <p class="lede">One man. One pen. Farhad Rabbany draws meditation art in a single sitting — no eraser, no underdrawing — and the drawing becomes a hoodie, a cap, a canvas.</p>
+    <div class="hrow">
+     <a class="btn" href="shop.html">Shop Issue 03 — The Drop</a>
+     <a class="chip" href="product.html">The Golden Heart Hoodie <b>$175 →</b></a>
+    </div>
+    <p class="mono ship">Ships from Los Angeles in 1–3 days · 14-day returns · No account needed</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+ <span>Hand-drawn in Beverly Hills 90210 <i>✦</i> One line · No eraser <i>✦</i> Drawn, not printed <i>✦</i> Signed by hand <i>✦</i>&nbsp;</span>
+ <span>Hand-drawn in Beverly Hills 90210 <i>✦</i> One line · No eraser <i>✦</i> Drawn, not printed <i>✦</i> Signed by hand <i>✦</i>&nbsp;</span>
+</div></div>
+
+<section class="ladder">
+ <div class="wrap">
+  <p class="kick" data-rv>The Ladder</p>
+  <h2 class="disp" data-rv>Every way in.</h2>
+  <p class="sub" data-rv>Six doors into the same drawing — from a $39 kit that teaches his line to the $300 commission he draws on your cap, once.</p>
+  <a class="lrow2" href="kit.html" data-rv><span class="nm">Draw Your First Paradise — The Kit</span><span class="nt">Tiles · pen · filmed lesson</span><span class="pr">$39</span></a>
+  <a class="lrow2" href="shop.html" data-rv><span class="nm">The Caps</span><span class="nt">Signature Mark · Paradise Mark</span><span class="pr">$69</span></a>
+  <a class="lrow2" href="shop.html" data-rv><span class="nm">The Spirit Tee</span><span class="nt">Zentangle Spirit · S–XL</span><span class="pr">$75</span></a>
+  <a class="lrow2" href="shop.html" data-rv><span class="nm">The Hoodies</span><span class="nt">Three hearts · Edition 03</span><span class="pr">$175</span></a>
+  <a class="lrow2" href="shop.html" data-rv><span class="nm">Canvas Prints</span><span class="nt">16 works · five sizes</span><span class="pr">$200+</span></a>
+  <a class="lrow2" href="commission.html" data-rv><span class="nm">The Commission</span><span class="nt">Drawn on your cap · 3 a month</span><span class="pr">$300</span></a>
+ </div>
+</section>
+
+<section class="drop">
+ <div class="wrap">
+  <div class="dhead">
+   <div>
+    <p class="kick" data-rv>Issue 03 — The Drop</p>
+    <h2 class="disp" data-rv>On the wall now.</h2>
+   </div>
+  </div>
+  <div class="dgrid">
+   <a class="gcard" href="product.html" data-rv>
+    <div class="ph"><img src="https://anotherdayinparadise.la/wp-content/uploads/2026/07/ADIP-Golden-Heart-Ivory-Hoodie-Back.jpg" alt="Golden Heart Hoodie — the drawing on the back" width="1116" height="1254"></div>
+    <div class="info"><div><div class="nm">The Golden Heart Hoodie</div><div class="mt">Edition 03 · Tile Nº 09</div></div><span class="pr">$175</span></div>
+   </a>
+   <a class="gcard" href="commission.html" data-rv>
+    <div class="ph"><img loading="lazy" src="https://anotherdayinparadise.la/wp-content/uploads/2026/06/Another-Day-in-Paradise-Hat-1.jpg" alt="The hand-drawn cap, drawn and signed by Farhad" width="1200" height="1200"></div>
+    <div class="info"><div><div class="nm">The Hand-Drawn Cap</div><div class="mt">The Commission · made per order</div></div><span class="pr">$300</span></div>
+   </a>
+   <a class="gcard" href="https://anotherdayinparadise.la/product/zentangle-spirit-tee-where-meditation-meets-style/" target="_blank" rel="noopener" data-rv>
+    <div class="ph"><img loading="lazy" src="https://anotherdayinparadise.la/wp-content/uploads/2026/07/ADIP-Zentangle-Spirit-Tee-1.jpg" alt="Zentangle Spirit Tee" width="1116" height="1254"></div>
+    <div class="info"><div><div class="nm">The Spirit Tee</div><div class="mt">Wear It · S–XL</div></div><span class="pr">$75</span></div>
+   </a>
+  </div>
+  <p class="more" data-rv><a class="btn ghost" href="shop.html">Open the full ledger — all 23 pieces</a></p>
+ </div>
+</section>
+
+<section class="comm">
+ <div class="wrap">
+  <div class="grid">
+   <div data-rv>
+    <p class="kick" style="color:var(--gold)">Nº 02 — The Commission</p>
+    <h2 class="disp">He draws<br>your cap.<br><span class="foil">Once.</span></h2>
+    <p>The stock cap is $69 and printed. This is $300 because nothing about it is printed: Farhad draws directly on your cap, by hand, over two weeks — your word woven into the pattern where only you know to look — and signs it when it's done.</p>
+    <p class="mono terms">$100 deposit · $200 before signing · 2–3 weeks · Final sale except damage</p>
+    <p style="margin-top:28px"><a class="btn goldb" href="commission.html">Reserve a slot — $300</a></p>
+   </div>
+   <div class="fig" data-rv>
+    <span class="stamp">Slots this month: 3 open</span>
+    <img src="https://anotherdayinparadise.la/wp-content/uploads/2026/06/Another-Day-in-Paradise-Hat-1.jpg" alt="The hand-drawn cap — drawn and signed by the artist" width="1200" height="1200">
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="listb">
+ <div class="wrap">
+  <p class="kick" data-rv>The Paradise List</p>
+  <h2 class="disp" data-rv>Get the list.</h2>
+  <p data-rv">The list hears first — 24 hours before every drop — and gets a printable tile drawn by Farhad. No discounts, ever. At most three emails a month.</p>
+  <form class="lform" action="#" data-rv>
+   <input type="email" required placeholder="YOUR EMAIL" aria-label="Your email">
+   <button class="btn" type="submit">Join the list</button>
+  </form>
+  <p class="fine">One list · No spam · Unsubscribe in one click</p>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <div class="fgrid">
+   <div>
+    <p class="fl">ADIP.LA</p>
+    <p style="color:#CFC2A4;font-size:14.5px;margin-top:10px;max-width:30ch">Hand-drawn meditation art by Farhad Rabbany — drawn in Beverly Hills 90210, made in Los Angeles.</p>
+    <p class="mono" style="margin-top:16px;color:#8E8272">1031 S Wooster St, Los Angeles<br>Mon–Fri 10–16 · info@anotherdayinparadise.la</p>
+   </div>
+   <div>
+    <p class="fh">The Index</p>
+    <a href="shop.html">Shop — The Ledger</a><a href="commission.html">The Commission</a><a href="kit.html">The $39 Kit</a><a href="gallery.html">Gallery — The Wall</a><a href="process.html">Process</a>
+   </div>
+   <div>
+    <p class="fh">Help</p>
+    <a href="faq.html">FAQ — No Fine Print</a><a href="faq.html">Shipping &amp; Returns</a><a href="contact.html">Contact the Studio</a><a href="cart.html">Your Bag</a>
+   </div>
+   <div>
+    <p class="fh">Follow</p>
+    <a href="https://www.instagram.com/a.d.i.p.la" target="_blank" rel="noopener">Instagram — @a.d.i.p.la</a>
+    <a href="https://www.threads.net/@a.d.i.p.la" target="_blank" rel="noopener">Threads — @a.d.i.p.la</a>
+    <a href="https://www.facebook.com/AnotherDayInParadiseADIP" target="_blank" rel="noopener">Facebook — Another Day In Paradise</a>
+   </div>
+  </div>
+  <p class="fine">© Another Day in Paradise · Drawn by hand in Los Angeles · This page is a design preview</p>
+ </div>
+</footer>
+
+<div id="cap" role="dialog" aria-label="Join the Paradise List">
+ <div class="box">
+  <button class="x" id="capx" aria-label="Close">×</button>
+  <p class="kick">The Paradise List</p>
+  <h3>First in, 24 hours early.</h3>
+  <p style="color:#D8CCAF">Drops, the printable tile, and nothing else. No discounts — the work doesn't go on sale; the list just hears first.</p>
+  <form id="capform" action="#">
+   <input type="email" required placeholder="YOUR EMAIL" aria-label="Your email">
+   <button class="btn" type="submit" style="width:100%">Join the list</button>
+  </form>
+  <p class="fine" id="capdone" style="display:none;color:var(--champagne)">You're on the list. First drop note lands 24 hours before it opens.</p>
+ </div>
+</div>
+
+<script>
+(function(){
+ var menu=document.getElementById('menu');
+ document.getElementById('menubtn').addEventListener('click',function(){menu.classList.add('open')});
+ document.getElementById('menuclose').addEventListener('click',function(){menu.classList.remove('open')});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')menu.classList.remove('open')});
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+ document.querySelectorAll('[data-rv]').forEach(function(el){io.observe(el)});
+ document.querySelectorAll('.gcard').forEach(function(c){
+  c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')});
+ });
+ var cap=document.getElementById('cap'),shown=false;
+ function showCap(){if(shown||sessionStorage.getItem('adipcap3'))return;shown=true;sessionStorage.setItem('adipcap3','1');cap.classList.add('show')}
+ setTimeout(showCap,16000);
+ document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<8)showCap()});
+ document.getElementById('capx').addEventListener('click',function(){cap.classList.remove('show')});
+ document.getElementById('capform').addEventListener('submit',function(e){e.preventDefault();this.style.display='none';document.getElementById('capdone').style.display='block'});
+})();
+</script>
+</body>
+</html>
