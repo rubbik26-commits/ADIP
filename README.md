@@ -1,9 +1,12 @@
 # ADIP.LA — Another Day in Paradise, by Farhad Rabbany
 
-The complete redesign of **anotherdayinparadise.la** — "Noir Champagne": a near-black,
-champagne-gold, smoked-glass storefront for Farhad Rabbany's hand-drawn meditation art
-(Bodoni Moda + Jost; bordeaux for the Commission), built as 14 static pages with no
-build step and no framework.
+The complete redesign of **anotherdayinparadise.la** — black glass, white light, and
+metal that shines: a storefront for Farhad Rabbany's hand-drawn meditation art whose
+palette is the art itself (black line on white), built as 14 static pages with no build
+step and no framework. Frosted-glass chrome with a visible navigation bar, a full-screen
+photo hero with the headline in smoked glass, full-bleed black/white sections, metallic
+gold reserved for prices, stamps, and calls to action, and light that follows the
+visitor's pointer across the cards.
 
 ## The pages
 
@@ -40,8 +43,8 @@ anotherdayinparadise.la, which already holds the real products, stock, and check
 
 No build. Serve the folder with any static host, e.g. `python3 -m http.server` in this
 directory, or read it straight from GitHub via a CDN mirror
-(`https://cdn.statically.io/gh/rubbik26-commits/ADIP/main/index.html`).
-Fonts load from Google Fonts (Anton, Libre Franklin, Courier Prime, Permanent Marker).
+(`https://raw.githack.com/rubbik26-commits/ADIP/main/index.html`).
+Fonts load from Google Fonts (Bebas Neue, Archivo, Space Grotesk, Permanent Marker).
 
 See `SUMMARY.md` for the full delivery report: store and link structure, social setup,
 the research behind the choices (with sources), and the remaining gaps.
