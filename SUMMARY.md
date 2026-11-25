@@ -156,3 +156,28 @@ mid, and desktop widths.
   design is deployed at anotherdayinparadise.la (with Search Console
   verification and the sitemap submitted there); a mirror link is for review
   and sharing, not for ranking.
+
+## 8. Addendum — Noir Champagne (the new color scheme)
+
+Robert rejected the newsprint/riso palette and asked for sexy. A second deep-research
+pass (luxury fashion/beauty design — palettes, glass, metal, type, motion; report kept
+with the project notes) produced the lead direction **Noir Champagne**, now applied to
+all 14 pages:
+
+- **Palette:** warm near-black `#111111` world; ivory `#F8F5EF` commerce surfaces;
+  champagne `#E8D6B3` and antique gold `#C9A84C` used only as gradient, hairline, and
+  glow — never flat fill; bordeaux `#4A1420` for the Commission; lifted plum and rouge
+  for accents. The old red/cobalt/newsprint scheme is gone everywhere, including
+  inline styles.
+- **Type:** Bodoni Moda display serif (the Didot fashion voice), Jost for UI and
+  labels, Cormorant Garamond italic for the romantic copy. Anton/Courier/Libre
+  Franklin are out.
+- **Materials:** smoked noir glass header, menu, and popup (blur + saturation,
+  champagne hairline, top specular); gold-foil wordmark and foil italic hero words
+  (animated at a slow 7–8s — fast shimmer reads cheap); champagne halo behind the
+  hero; glowing wine/plum buttons; product cards lift with a slow image zoom and a
+  champagne glow; motion slowed to a 1s expo ease throughout, reduced-motion safe.
+- **Verified:** screenshot pass over the home, shop, product, gallery, commission,
+  and menu at desktop and phone widths, plus a full overflow re-scan — after one
+  real fix (page heads that sat directly on the old paper background now sit in the
+  noir world with ivory type, as the research's two-worlds pattern prescribes).
