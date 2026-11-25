@@ -188,3 +188,13 @@ store — 24 of 24 return 200 — and every external link re-verified.
 
 Note: `preview.html` from an earlier one-page experiment remains in the repo,
 unlinked and superseded by this build.
+
+**Fix round (same night, after live verification of all 14 pages):** the live check
+caught the cart page's totals panel breaking its column — panels nested inside grid
+columns now render as contained glass cards instead of full-bleed bands (cart totals,
+the two About link cards, the two Contact cards). The gallery tile counter now reads
+"TILE 01 OF 14" to match the 14 tiles actually hung (16 works exist; two share a
+photograph, as the page's own correction note states). The contact page's giant email
+headline was reduced so the address sits on one line. Everything else from the live
+check passed as built: 50 images, 0 broken, Bebas headlines on all 14 pages, visible
+nav at desktop width, no sideways scrolling anywhere.
