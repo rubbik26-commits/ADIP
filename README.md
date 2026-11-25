@@ -1,8 +1,9 @@
 # ADIP.LA — Another Day in Paradise, by Farhad Rabbany
 
-The complete redesign of **anotherdayinparadise.la** — "The Poster Wall": a newsprint /
-riso-red / cobalt storefront for Farhad Rabbany's hand-drawn meditation art, built as 14
-static pages with no build step and no framework.
+The complete redesign of **anotherdayinparadise.la** — "Noir Champagne": a near-black,
+champagne-gold, smoked-glass storefront for Farhad Rabbany's hand-drawn meditation art
+(Bodoni Moda + Jost; bordeaux for the Commission), built as 14 static pages with no
+build step and no framework.
 
 ## The pages
 
