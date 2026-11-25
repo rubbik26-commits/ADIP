@@ -1,200 +1,115 @@
-# ADIP Poster Wall — Delivery Summary
+# ADIP redesign — written summary
 
-**Repo:** https://github.com/rubbik26-commits/ADIP (branch `main`)
-**Browse the site (no password, no expiry):**
-https://raw.githack.com/rubbik26-commits/ADIP/main/index.html
-(a public CDN mirror of this repo — every page, image, and link below works from it)
+## 1. What this build is
+"Midnight Garden" — a from-scratch redesign of Another Day in Paradise
+(anotherdayinparadise.la), the wearable-art store of LA artist Farhad Rabbany.
+Nothing from the live site's structure survives: no page keeps its old
+sections, order, compositions, or sentences. What carries over is only
+infrastructure: the verified facts (products, prices, policies), the verified
+photograph URLs, the buy-path into the live WooCommerce store, and the
+SEO/AEO layer.
 
-## 1. What was pushed
+## 2. The design system
+- **Palette:** deep green-black (#060D09 → #0F2417) with warm bone (#F2EEE3)
+  light rooms, and a single animated iridescent gradient (mint #7FE3B0, sky
+  #9ADCF5, lilac #D9A7F2, sun #F2C14E) drawn from *Empathy in Color, Series II*
+  — the one series in color. Iridescence is spent only on what matters: the
+  logo, primary buttons, prices, the drawn line itself.
+- **Type:** Syne (display), Manrope (body), Space Grotesk (labels) — loaded
+  from Google Fonts, self-documented in every page's colophon.
+- **Chrome:** fixed glass header (blur + visible nav: Shop / Gallery /
+  Process / Commission / Farhad / Contact + Bag), an iridescent
+  scroll-progress bar, and a full-screen glass Index menu (Nº 00–10).
+- **Motion is the drawing:** the hero line draws itself on arrival; the
+  Process page's artwork draws and undraws with the visitor's scroll; a
+  hold-to-draw interaction on the product page; pointer-tracked light on
+  tiles and panels. Task pages (cart, contact, FAQ) stay calm.
+  `prefers-reduced-motion` is honored throughout.
 
-17 files in the first push, this summary and share metadata in the second:
+## 3. The pages
+- **index — The Gate.** Full-viewport hero: the iridescent line draws itself
+  under "Paradise is one unbroken line." Then the line worn (full-bleed
+  photograph), three garments, the color-series feature, the Commission, a
+  sideways rail of prints, and the Paradise List.
+- **shop — The Wall.** All products as one sideways-travelling wall of tiles
+  (price always printed beside the name), a Commission panel, then a compact
+  Index table of every piece for fast finding. Two honest notes: the Paradise
+  Heart Hoodie has no verified photograph anywhere, so it is listed without
+  one rather than dressed in another hoodie's picture; "Flow of Serenity"
+  stays off the wall (it was listed at $0 on the old site).
+- **product — Golden Heart Hoodie.** Before/after front↔back slider, size
+  chips with a live readout, total-cost honesty lines, provenance table,
+  hold-to-draw, an unhidden zero-reviews panel.
+- **print — Heart of Paradise.** Artwork first, full width; the five-size
+  ladder ($200/$220/$250/$300/$350) as chips that update the price readout;
+  "frame not included" stated plainly.
+- **gallery.** Sixteen works in four series chapters, alternating dark and
+  bone rooms — including a printed correction: two works shared one
+  photograph on the old site; every tile here was checked against its own
+  file, and Dancing with Gratitude is named without a tile until it has a
+  photograph of its own.
+- **commission.** The $300 hand-drawn cap: glow hero, itemized inclusions
+  and money terms ($100 deposit / $200 before signing) printed before any
+  form, a working configurator (cap colour swaps the real photo, motif
+  re-draws, word + initials feed a live summary), the 7 steps Day 0 → ships.
+- **kit.** The $39 draw-your-first-paradise kit: contents, a free tile on
+  the Process page first, an honestly empty "wall of other people's lines."
+  The kit is not a live store product yet, so its button routes to the
+  Paradise List and says so.
+- **process.** "Scroll is the hand" — the scroll-drawn artwork, the three
+  steps, and a working draw-along tile (mirror modes, clear, PNG export).
+- **watch.** The three video formats as storyboard panels, with the research
+  numbers printed on the page (Blossom analysis of 1,774 art videos: hook
+  21.11×, sound 22.80×, before/after 8.67×; the Devon Rodriguez gift format).
+- **journal / about / faq / contact / cart.** Editorial journal; the artist
+  page written once (the old site duplicated its About copy); all 15 FAQs
+  under six headings with one 14-day rule; a routed contact form (five
+  subjects, each with its own routing line and a 2-business-day commitment);
+  a calm bag page that shows the commission as $100 today + $200 later and
+  hands off to the live store's cart/checkout.
 
-- All 14 pages of the Poster Wall build: `index, shop, product, print, commission, kit,
-  gallery, process, watch, about, journal, faq, contact, cart` (`.html`)
-- `assets.css` (the whole design system) and `app.js` (menu, capture popup, sliders,
-  configurator, draw-along tile, hold-to-draw)
-- `README.md` — what the site is, how the store works, how to run/deploy it
-- `SUMMARY.md` — this report
+## 4. Store wiring
+Repo = storefront, WooCommerce = register. Every tile/row/buy button opens
+the product's own live product page (new tab). Cart page: Express → live
+/checkout/, guest → live /cart/, Remove → live /cart/. Commission CTA → the
+$300 cap's live page. Social links (Instagram/Threads @a.d.i.p.la, Facebook)
+are real on every page; Open Graph/Twitter/product meta on every page.
 
-Every pushed file was read back off GitHub and compared byte-for-byte against the
-source: 17/17 identical. Photography is not stored in the repo (the push channel is
-text-only); each photo is served from the live store's own uploads at full resolution —
-the same originals the store itself uses.
+## 5. SEO / AEO
+Canonical + robots meta + theme-color on all 14 pages; JSON-LD: Organization
++ WebSite graph (home), Product records (product/print/commission/kit),
+ItemList (shop), FAQPage generated from the FAQ page's own 15 Q&As,
+BreadcrumbList on all inner pages. robots.txt explicitly allows AI crawlers;
+sitemap.xml lists all 14 pages; llms.txt carries the brand brief including
+the "not food" disambiguator (a London chef owns the bare name on social).
+Real image dimensions + lazy loading below the fold. Note: rankings accrue
+to the real domain only when this is deployed at anotherdayinparadise.la.
 
-## 2. Store and link structure
+## 6. Verification performed on this build
+- Every image URL on every page curl-checked: all return 200 (22 unique).
+- Every href/src machine-checked against the verified source corpus: zero
+  invented URLs; the QR-code graphic that the old site used as the $300
+  cap's photo appears nowhere.
+- Local browser QA: zero horizontal overflow on all 14 pages at 1440px and
+  390px; interaction smoke tests pass (menu + Esc, scroll progress, size
+  chips, before/after slider, print price readout, commission configurator,
+  draw-along canvas, rail progress, contact routing).
+- Live verification at the pinned link follows in the commit history below.
 
-The architecture: **this repo is the storefront; the existing WooCommerce store at
-anotherdayinparadise.la is the register.** It already holds all 23 real products, real
-stock, and a working checkout, so nothing had to be migrated or rebuilt.
-
-- **Buy buttons** on the product, canvas, and commission pages link straight to that
-  product's live page on the WooCommerce store (new tab), where size/variant selection,
-  the real cart, and payment happen.
-- **The Ledger (shop)** — every product row links to its own product: the two showcase
-  products (Golden Heart Hoodie, Heart of Paradise canvas) open their design pages here;
-  the other 13 rows link directly to their live store pages.
-- **The Wall (gallery)** — each of the 14 works' "Canvas from $200" link goes to that
-  work's own live product page.
-- **Bag page** — express checkout links to the live store's `/checkout/`, guest path to
-  its `/cart/`, and the page states in print that checkout runs on the live store.
-- **The $39 Kit** has no live product yet, so its button honestly routes to the Paradise
-  List (first-printing signup) instead of a fake checkout.
-- **Link audit:** all 14 internal page targets exist; all 27 external links (22 product
-  pages, cart, checkout, 3 social profiles) were requested and returned 200.
-
-## 3. Social media setup
-
-- **Profile links:** Instagram and Threads (@a.d.i.p.la) and the Facebook page are
-  linked in the footer of all 14 pages (verified live).
-- **Share metadata:** every page carries the full Open Graph set (title, type, image,
-  url, description, site name) plus Twitter Card tags, so any page pasted into
-  Instagram, Facebook, X, or a message thread renders with the artwork, the page title,
-  and its one-line description. Product pages also carry price and availability meta.
-- **The plan is printed on the site itself** (Watch page): the three video formats, the
-  posting rhythm, and the @a.d.i.p.la handle disambiguation ("Not food. Hand-drawn
-  meditation art by Farhad, Los Angeles.").
-- **Recommended order** (from the research, §4): profile links first (done) → Meta
-  product catalog/tagging next → TikTok Shop last.
-
-## 4. Research behind the choices (sources)
-
-- **Static front-end + WooCommerce back-end is an established pattern.** WooCommerce's
-  own documentation covers add-to-cart URLs (`?add-to-cart=ID`, variation IDs for
-  variable products, `/checkout/?add-to-cart=` redirects) —
-  https://woocommerce.com/document/quick-guide-to-woocommerce-add-to-cart-urls/ — and
-  its Store API is stable and built for custom front-ends —
-  https://developer.woocommerce.com/2022/03/25/store-api-is-now-considered-stable/
-  Because apparel needs a size choice, the research recommends linking to the product
-  page for variable products (an add-to-cart link requires a specific variation ID) —
-  which is exactly how the buy buttons here are wired.
-- **Keep WooCommerce checkout.** All three options charge the same US card rate
-  (2.9% + $0.30): WooPayments has no setup or monthly fee; Stripe Payment Links match
-  the rate but don't sync inventory/orders with WooCommerce (useful later as a
-  secondary QR/DM channel — https://stripe.com/pricing); Shopify Basic adds
-  $29–39/month and a full migration for no rate advantage —
-  https://www.shopify.com/pricing
-- **Social commerce order.** Meta Shops eligibility needs a Professional Instagram
-  account, a Facebook Page, a catalog in Commerce Manager, a verified domain, and
-  products buyable on the business's own site; since September 2025 Meta Shops check
-  out on the business's website — so tagging will send buyers to the WooCommerce store,
-  not a competing checkout. The free official Meta for WooCommerce plugin syncs the
-  catalogue — https://metricool.com/instagram-shopping-how-to-use-it/ TikTok Shop US
-  requires an 18+ US seller with US ID, SSN last-4/ITIN, and a US bank account, and
-  charges a 6% referral fee — a later step, and Farhad's documents, not ours —
-  https://smallshopkit.com/tiktok-shop-seller/
-- **Share metadata.** The Open Graph protocol requires four properties — title, type,
-  image, url (https://ogp.me) — all present on every page, with a 1200px artwork image;
-  X falls back to Open Graph for title/description/image but requires its own
-  `twitter:card` tag, which is also on every page.
-- **Comparables.** Single-artist stores repeat the same structure this build uses:
-  shop and portfolio as separate sections, product pages that run story → specs →
-  price/availability → shipping/returns on one page, collections by product type, and
-  newsletter capture in the footer — e.g. Making Madi (makingmadi.com), the James Jean
-  store (visitjamesjean.shop), Lisa Congdon (lisacongdon.com), Threadless Artist Shops.
-
-## 5. How to run and deploy
-
-- **Run locally:** any static server in this folder (`python3 -m http.server`), or just
-  open the githack link above — it serves this repo directly.
-- **Deploy elsewhere:** copy the folder to any static host (Netlify, Vercel,
-  Cloudflare Pages); there is no build step. Fonts load from Google Fonts.
-- **Canonical address option:** in the repo's Settings → Pages, set Source to the
-  `main` branch and the same files also serve at
-  `https://rubbik26-commits.github.io/ADIP/` — a repo-owner toggle I can't flip from
-  the connected tools.
-
-## 6. Remaining gaps — need Farhad's / Robert's input
-
-1. **Commission money split.** The commission page promises a $100 deposit + $200
-   balance; the live store sells the cap at a flat $300. Pick one: install a
-   WooCommerce deposits plugin so the page's split is real at checkout, or change the
-   page copy to flat $300.
-2. **The $39 Kit product** doesn't exist in WooCommerce yet. Create it there and the
-   kit page's button becomes a buy button (today it routes to the list).
-3. **"Flow of Serenity" is still priced $0** on the live store — a standing launch
-   blocker from the original audit. Price it or unpublish it; it is excluded from
-   this site meanwhile.
-4. **Meta product tagging** needs the free Meta for WooCommerce plugin installed in
-   the WordPress admin plus a Commerce Manager catalog review — needs Farhad's
-   website/Facebook logins (already awaited).
-5. **TikTok / Pinterest / YouTube** accounts don't exist yet; claiming @a.d.i.p.la
-   there and any TikTok Shop registration need Farhad (his ID and bank details for
-   the Shop).
-6. **GitHub Pages toggle** (§5) — one settings click by the repo owner if the
-   canonical github.io address is wanted instead of the mirror link.
-
-## 7. Addendum — the glass edition + SEO/AEO layer (same night)
-
-**Design.** Robert asked where the glassmorphism was — he had raised glass, glow,
-shine, and metal at the start of the commission, and the matte print build didn't
-have it. The site is now "The Wall, Behind Glass": the same Poster Wall under a
-laminate layer. Frosted-glass header and cobalt-glass Index menu (backdrop blur),
-a glass Paradise List popup, metallic gold foil stamps with a moving sheen, an
-animated metallic sweep across the Commission poster, glowing red/cobalt buttons
-with a light sweep on hover, and product cards that tilt toward the pointer with
-the light following your hand across every poster. Reduced-motion settings turn
-the motion off. Verified by screenshot and a full overflow re-scan at phone,
-mid, and desktop widths.
-
-**SEO / AEO — what is now on every page:**
-- Structured data (JSON-LD): Organization + WebSite on the home page; a Product
-  record with price and availability for the hoodie, canvas, commission, and kit
-  pages; an ItemList of all 15 products on the shop page; a FAQPage record built
-  from the FAQ page's own 15 questions and answers; BreadcrumbList on every
-  inner page.
-- Canonical URL, robots meta (index, follow, large image previews), theme-color,
-  font preconnects on all 14 pages — on top of the unique titles, meta
-  descriptions, Open Graph, and Twitter Cards from the first push.
-- Every photo carries its real width/height (no layout shift) and lazy loading
-  below the fold.
-- `robots.txt` (all crawlers and the major AI answer-engine bots explicitly
-  allowed, sitemap declared), `sitemap.xml` (all 14 pages), and `llms.txt` —
-  a plain-text brand brief for AI answer engines: who Farhad is, what is sold
-  at what price, the policies, and the social profiles.
-- Honest boundary: this layer makes the code fully index- and answer-ready.
-  Rankings and answer-engine citations accrue to the real domain when this
-  design is deployed at anotherdayinparadise.la (with Search Console
-  verification and the sitemap submitted there); a mirror link is for review
-  and sharing, not for ranking.
-
-## 9. Addendum — the Black / White / Glass build (2026-11-24, late)
-
-A full visual rebuild on top of the same content, store wiring, and SEO layer.
-Nothing about what the site says or sells changed; everything about how it looks did.
-
-**The system:** the art is black line on white, so the site is black glass and white
-light. Bebas Neue display type at full scale, Archivo body, Space Grotesk labels.
-Sections are full-bleed bands alternating white, gallery grey, and black — no paper,
-no poster boxes, no crop marks. Gold exists only as animated metal foil: the wordmark
-is chrome, prices and stamps are gold foil, primary buttons are gold metal pills with
-a glow. Frosted glass throughout: the fixed header, the full-screen menu, the hero
-panel, the product cards on dark bands, the list popup. Product cards tilt toward the
-pointer with light following the hand. A visible navigation bar (Shop / Gallery /
-Process / Commission / Farhad / Contact) now sits in the header on every page — the
-full Index menu remains behind the gold button.
-
-**The home page** opens on a full-screen photograph with the headline in a smoked-
-glass panel and the $175 hoodie one tap away; the process film-strip, price ladder,
-Drop, gift/commission story, and Paradise List follow as before, restyled.
-
-**Verification for this build:** every page screenshot-checked at desktop and phone
-widths; zero horizontal overflow on all 14 pages at 390px and 1440px; interaction
-tests passed (menu open/close, size chips, before/after slider, commission summary,
-draw-your-own tile canvas); a full read-through audit of every inline style in all
-14 files against the new stylesheet, with the clashes found fixed (legacy colour
-variables resolved, white text removed from light sections, gallery captions and
-links back on-palette); every image address on the site re-checked against the live
-store — 24 of 24 return 200 — and every external link re-verified.
-
-Note: `preview.html` from an earlier one-page experiment remains in the repo,
-unlinked and superseded by this build.
-
-**Fix round (same night, after live verification of all 14 pages):** the live check
-caught the cart page's totals panel breaking its column — panels nested inside grid
-columns now render as contained glass cards instead of full-bleed bands (cart totals,
-the two About link cards, the two Contact cards). The gallery tile counter now reads
-"TILE 01 OF 14" to match the 14 tiles actually hung (16 works exist; two share a
-photograph, as the page's own correction note states). The contact page's giant email
-headline was reduced so the address sits on one line. Everything else from the live
-check passed as built: 50 images, 0 broken, Bebas headlines on all 14 pages, visible
-nav at desktop width, no sideways scrolling anywhere.
+## 7. Open gaps (need Farhad's / Robert's input — unchanged from prior work)
+a. Commission money split: these pages promise $100 deposit + $200 balance;
+   the live store sells the cap flat at $300 — needs a deposits plugin or a
+   copy decision on the live product.
+b. The $39 kit does not exist in WooCommerce yet; its button routes to the
+   Paradise List until it does.
+c. "Flow of Serenity" is still $0 on the live store — price it or unpublish.
+d. Meta product tagging needs Farhad's WordPress/Facebook logins.
+e. TikTok/Pinterest/YouTube accounts don't exist yet; TikTok Shop would
+   additionally need Farhad's ID/bank details.
+f. GitHub Pages (Settings → Pages) would give this repo a canonical
+   rubbik26-commits.github.io/ADIP/ address; until then the shareable link
+   is the commit-pinned githack mirror.
+g. If this design is accepted for the live store: deployment happens on
+   WordPress only after Farhad's logins arrive and Robert approves; then
+   canonical/OG/sitemap/llms URLs re-point to anotherdayinparadise.la and
+   Search Console is connected.

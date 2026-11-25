@@ -17,108 +17,127 @@
 <meta name="twitter:description" content="Scroll is the hand: watch one line become a tile, a print, a hoodie — then draw your own tile.">
 <meta name="twitter:image" content="https://anotherdayinparadise.la/wp-content/uploads/2025/08/SinglePDF0824-02a.jpg">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23C9A24B' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23060D09'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%237FE3B0' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://raw.githack.com/rubbik26-commits/ADIP/main/process.html">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#060D09">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets.css">
 <style>
 #tile{touch-action:none;cursor:crosshair}
+.stage{background:#F7F4EA;border-radius:18px;padding:26px 20px 12px}
+.stage .mono{color:var(--pink)}
+.stepgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+.stepgrid .sno{font-family:'Syne',sans-serif;font-weight:800;font-size:30px}
+.tilegrid{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start}
+@media(max-width:760px){.tilegrid{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://raw.githack.com/rubbik26-commits/ADIP/main/index.html"}, {"@type": "ListItem", "position": 2, "name": "Process", "item": "https://raw.githack.com/rubbik26-commits/ADIP/main/process.html"}]}</script>
 </head>
 <body>
 <header><div class="hbar">
-<a class="logo" href="index.html">ADIP<b>.</b>LA<small>BY FARHAD RABBANY</small></a>
-<span class="hissue">Issue 03 — The Drop · Los Angeles</span>
+<a class="logo" href="index.html">ADIP.LA<small>BY FARHAD RABBANY</small></a>
+<span class="hissue">The Garden Edition · Los Angeles</span>
 <nav class="hnav"><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="process.html">Process</a><a href="commission.html">Commission</a><a href="about.html">Farhad</a><a href="contact.html">Contact</a></nav>
 <a class="baglink" href="cart.html">Bag (2)</a>
 <button id="menubtn">Index +</button>
 </div></header>
-<div id="inkline"></div>
+<div id="scrollprog"></div>
 <div id="menu">
 <button id="menuclose">Close ×</button>
-<p class="mono" style="letter-spacing:.22em;margin-bottom:18px">THE WHOLE SITE, AS AN INDEX — LIKE A CATALOGUE RAISONNÉ</p>
-<a class="mrow" href="index.html"><span class="mno">Nº 00</span><span class="mname">Front Page</span><span class="mnote">Start here</span></a>
-<a class="mrow" href="shop.html"><span class="mno">Nº 01</span><span class="mname">The Ledger — Shop</span><span class="mnote">23 pieces · numbered</span></a>
+<p class="mono" style="letter-spacing:.22em;margin-bottom:18px;color:var(--dim)">Every room in the garden</p>
+<a class="mrow" href="index.html"><span class="mno">Nº 00</span><span class="mname">The Gate</span><span class="mnote">Start here</span></a>
+<a class="mrow" href="shop.html"><span class="mno">Nº 01</span><span class="mname">The Wall — Shop</span><span class="mnote">23 pieces</span></a>
 <a class="mrow" href="commission.html"><span class="mno">Nº 02</span><span class="mname">The Commission</span><span class="mnote">$300 · 3 slots a month</span></a>
 <a class="mrow" href="kit.html"><span class="mno">Nº 03</span><span class="mname">The $39 Kit</span><span class="mnote">Draw your first paradise</span></a>
-<a class="mrow" href="gallery.html"><span class="mno">Nº 04</span><span class="mname">The Wall — Gallery</span><span class="mnote">16 works · 4 series</span></a>
+<a class="mrow" href="gallery.html"><span class="mno">Nº 04</span><span class="mname">The Gallery</span><span class="mnote">16 works · 4 series</span></a>
 <a class="mrow" href="process.html"><span class="mno">Nº 05</span><span class="mname">Process</span><span class="mnote">Watch · then draw</span></a>
 <a class="mrow" href="watch.html"><span class="mno">Nº 06</span><span class="mname">Watch</span><span class="mnote">The formats</span></a>
 <a class="mrow" href="journal.html"><span class="mno">Nº 07</span><span class="mname">Journal</span><span class="mnote">Sells nothing</span></a>
 <a class="mrow" href="about.html"><span class="mno">Nº 08</span><span class="mname">Farhad</span><span class="mnote">The artist</span></a>
 <a class="mrow" href="faq.html"><span class="mno">Nº 09</span><span class="mname">FAQ + Policies</span><span class="mnote">One 14-day rule</span></a>
 <a class="mrow" href="contact.html"><span class="mno">Nº 10</span><span class="mname">Contact</span><span class="mnote">The studio</span></a>
-<p class="mono" style="margin-top:26px;letter-spacing:.14em">1031 S WOOSTER ST, LOS ANGELES · MON–FRI 10–16 · INFO@ANOTHERDAYINPARADISE.LA · @A.D.I.P.LA</p>
+<p class="mono" style="margin-top:26px;letter-spacing:.14em;color:var(--dim)">1031 S WOOSTER ST, LOS ANGELES · MON–FRI 10–16 · INFO@ANOTHERDAYINPARADISE.LA · @A.D.I.P.LA</p>
 </div>
 
 <div class="wrap">
-<section style="padding-bottom:24px">
-<p class="kick">Nº 05 — Process · the proof-of-hand page</p>
-<h1>Scroll is<br>the hand<span style="color:var(--red)">.</span></h1>
-<p class="lede" style="margin-top:14px">Keep scrolling. The drawing below happens at the speed of your scroll — down, the pen advances; up, it undraws. That is not a decoration. That is the entire product, performed by your own hand movement.</p>
+
+<!-- PROCESS — the line, performed by your scroll -->
+<section style="padding:54px 0 26px">
+<p class="kick">Nº 05 — Process · The proof-of-hand page</p>
+<h2 class="h2x">Scroll is<br>the hand<span class="chrome">.</span></h2>
+<p class="lede" style="margin-top:16px">Keep scrolling, and the drawing below keeps pace with you — down, and the pen advances; up, and it undraws. It isn't a decoration. It is the entire product, performed by your own hand movement.</p>
 </section>
 
-<div class="drawsvg" style="background:#fff;border:3px solid var(--ink);padding:26px 20px 10px">
-<svg viewBox="0 0 600 380" style="width:100%" fill="none" stroke="#16130C" stroke-width="3" stroke-linecap="round">
+<div class="panel" data-rv>
+<div class="drawsvg stage">
+<svg viewBox="0 0 600 380" style="width:100%" fill="none" stroke="url(#iridGrad)" stroke-width="3" stroke-linecap="round">
+<defs><linearGradient id="iridGrad" x1="0" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#7FE3B0"/><stop offset=".35" stop-color="#9ADCF5"/><stop offset=".6" stop-color="#D9A7F2"/><stop offset=".82" stop-color="#F2C14E"/><stop offset="1" stop-color="#7FE3B0"/>
+</linearGradient></defs>
 <path d="M300 330 C 180 262 96 196 96 122 C 96 74 140 52 182 66 C 232 82 262 122 300 176 C 338 122 368 82 418 66 C 460 52 504 74 504 122 C 504 196 420 262 300 330 Z"/>
 <path d="M150 140 C 210 112 262 148 300 202 C 338 148 390 112 450 140"/>
 <path d="M158 192 C 216 164 264 198 300 248 C 336 198 384 164 442 192"/>
 <path d="M186 244 C 232 222 268 250 300 292"/>
 <path d="M40 356 C 160 336 260 372 380 352 C 460 340 530 360 566 350"/>
 </svg>
-<p class="mono" style="padding:8px 2px 14px;letter-spacing:.1em">1. A BLANK TILE → 2. ONE LINE, NO ERASER → 3. SIGNED. SCROLL BACK UP AND IT UNDRAWS — NOTHING HERE IS A VIDEO FILE; IT IS ONE LINE, DRAWN BY YOUR SCROLL.</p>
+<p class="mono" style="padding:8px 2px 10px;letter-spacing:.1em">1 · A blank tile → 2 · One line, no eraser → 3 · Signed. Scroll back up and it undraws — nothing here is a video file; it is one line, drawn by your scroll.</p>
+</div>
 </div>
 
-<section>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px">
-<div><p class="disp" style="font-size:34px">01 — The tile</p><p style="margin-top:8px">Every piece starts as a blank square of paper on the studio table. The practice began as a daily meditation — a way to sit still with one line until the noise stopped.</p></div>
-<div><p class="disp" style="font-size:34px">02 — The line</p><p style="margin-top:8px">One fine-liner. No underdrawing, no eraser. The pattern grows the way his tiles grow — outward, mirrored, patient. A mistake is not removed; it is absorbed into the pattern.</p></div>
-<div><p class="disp" style="font-size:34px">03 — The cloth</p><p style="margin-top:8px">Finished tiles are printed and embroidered in Los Angeles onto hoodies, caps and a tee — or drawn directly onto a cap, once, for one person, when it's a commission.</p></div>
+<!-- THE THREE STEPS -->
+<div class="band" data-rv>
+<div class="stepgrid">
+<div class="panel"><p class="sno chrome">01</p><p class="h3x" style="margin:8px 0">The tile</p><p class="mut">Every piece begins as a blank square of paper on the studio table. The practice started as a daily meditation — a way to sit still with a single line until the noise stopped.</p></div>
+<div class="panel"><p class="sno chrome">02</p><p class="h3x" style="margin:8px 0">The line</p><p class="mut">One fine-liner. Nothing sketched underneath, nothing erased. The pattern grows the way the tiles grow — outward, mirrored, patient — and a mistake is not removed; it is absorbed into the pattern.</p></div>
+<div class="panel"><p class="sno chrome">03</p><p class="h3x" style="margin:8px 0">The cloth</p><p class="mut">Finished tiles are printed and embroidered in Los Angeles onto hoodies, caps and a tee — or, for a commission, drawn straight onto a cap, once, for one person.</p></div>
 </div>
-<div class="halftone" style="border:2px solid var(--ink);margin-top:28px"><img decoding="async" width="1254" height="1254" src="https://anotherdayinparadise.la/wp-content/uploads/2026/07/Another-Day-in-Paradise-Hootie-Black-Back-1.jpg" alt="The line, finished, on the Rhythm Heart hoodie" style="width:100%;height:300px;object-fit:cover"></div>
-<p class="fine" style="margin-top:8px">THE RHYTHM HEART HOODIE'S BACK — WHERE A TILE ENDS UP. <a href="product.html" style="color:var(--red);font-weight:700">Nº 001 IN THE LEDGER →</a></p>
-</section>
+<figure style="margin:30px 0 0">
+<img loading="lazy" decoding="async" width="1254" height="1254" src="https://anotherdayinparadise.la/wp-content/uploads/2026/07/Another-Day-in-Paradise-Hootie-Black-Back-1.jpg" alt="The line, finished, on the Rhythm Heart hoodie" style="width:100%;height:340px;object-fit:cover;border-radius:22px">
+<figcaption class="fine" style="margin-top:10px">The Rhythm Heart hoodie's back — where a tile ends up. <a href="product.html" style="color:var(--sun);font-weight:700">See it in the shop →</a></figcaption>
+</figure>
+</div>
 
-<section style="padding-top:8px">
-<div class="poster blue crops" data-rv>
-<p class="kick" style="color:#C9CFF2">Your turn — the draw-along tile</p>
-<h2>Now you<span style="color:#fff">.</span></h2>
-<p style="max-width:56ch;margin-top:10px">Draw inside the tile. Your line is mirrored the way his patterns grow, so a shaky minute of drawing turns into something that looks intentional. His took ten thousand hours. Yours takes a minute. Both count.</p>
-<div style="display:grid;grid-template-columns:auto 1fr;gap:26px;margin-top:22px;align-items:start">
-<canvas id="tile" width="520" height="520" style="background:#fff;border:3px solid #fff;width:min(420px,80vw);height:auto"></canvas>
+<!-- YOUR TILE -->
+<div class="band deep" data-rv>
+<div class="panel">
+<p class="kick">Your turn — the draw-along tile</p>
+<h2 class="h2x" style="margin-bottom:12px">Now you<span class="chrome">.</span></h2>
+<p style="max-width:56ch">Draw inside the tile. Your stroke is mirrored the way his patterns grow, so one shaky minute of drawing turns into something that looks deliberate. His took ten thousand hours. Yours takes a minute. Both count.</p>
+<div class="tilegrid" style="margin-top:24px">
+<canvas id="tile" width="520" height="520" style="background:#fff;border-radius:18px;width:min(420px,80vw);height:auto"></canvas>
 <div>
-<p class="mono" style="color:#C9CFF2;letter-spacing:.12em;line-height:2.2">MIRROR: <b id="mirstate" style="color:#fff">4-WAY</b><br>THE TILE IS YOURS — KEEP IT AS A PNG,<br>FRAME AND ALL.</p>
+<p class="mono" style="letter-spacing:.12em;line-height:2.2">Mirror: <b id="mirstate" style="color:var(--mint)">4-WAY</b><br>The tile is yours — keep it as a PNG,<br>frame and all.</p>
 <p style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-<button class="btn paper" id="mirbtn">Mirror: 4-way</button>
-<button class="btn paper" id="clearbtn">Clear</button>
-<button class="btn red" id="keepbtn">Keep my tile ↓</button>
+<button class="btn ghost" id="mirbtn">Mirror: 4-way</button>
+<button class="btn ghost" id="clearbtn">Clear</button>
+<button class="btn irid" id="keepbtn">Keep my tile ↓</button>
 </p>
-<p class="fine" style="margin-top:14px;color:#C9CFF2">THE DOWNLOAD IS THE SHARABLE THING: YOUR TILE, FRAMED WITH THE STUDIO'S NAME. THE $39 KIT PUTS THE REAL TILES AND HIS PEN IN YOUR HANDS — <a href="kit.html" style="color:#fff;font-weight:700">Nº 03 →</a></p>
+<p class="fine" style="margin-top:16px">The download is the shareable thing: your tile, framed with the studio's name. The $39 kit puts the real tiles and his pen in your hands — <a href="kit.html" style="color:var(--sun);font-weight:700">Nº 03 →</a></p>
 </div>
 </div>
 </div>
-</section>
+</div>
 
-<section style="padding-top:6px;text-align:left">
-<p class="disp" style="font-size:clamp(32px,5vw,54px)">Drawn in Beverly Hills.<br>Printed in Los Angeles.<br>No two alike.</p>
-<p style="margin-top:18px"><a class="btn red" href="shop.html">The Ledger — see what the line became</a></p>
-</section>
+<!-- CLOSE -->
+<div class="band" data-rv>
+<p class="h3x" style="font-size:clamp(30px,4.6vw,52px);line-height:1.15">Drawn in Beverly Hills.<br>Printed in Los Angeles.<br>No two alike.</p>
+<p style="margin-top:22px"><a class="btn irid" href="kit.html">The $39 Kit — real tiles, his pen</a></p>
+</div>
+
 </div>
 
 <footer><div class="wrap">
-<p class="disp" style="font-size:clamp(40px,6.5vw,84px);margin-bottom:8px">Another Day in Paradise<span style="color:var(--red)">.</span></p>
-<p class="mono" style="color:#B9B09A;margin-bottom:34px">COLOPHON — SET IN BEBAS &amp; ARCHIVO. BUILT IN LOS ANGELES. NO TEMPLATES WERE USED.</p>
+<p class="disp" style="font-size:clamp(38px,6.2vw,80px);margin-bottom:8px">Another Day in Paradise.</p>
+<p class="mono" style="color:var(--dim);margin-bottom:34px">COLOPHON — SET IN SYNE &amp; MANROPE. GROWN IN LOS ANGELES. NO TEMPLATES WERE USED.</p>
 <div class="cols">
 <div><p class="fh">Studio</p><p>1031 S Wooster Street<br>Los Angeles, CA 90035<br>Mon–Fri · 10:00–16:00<br>info@anotherdayinparadise.la</p></div>
-<div><p class="fh">The Index</p><a href="shop.html">Nº 01 — The Ledger (Shop)</a><a href="commission.html">Nº 02 — The Commission</a><a href="kit.html">Nº 03 — The $39 Kit</a><a href="gallery.html">Nº 04 — The Wall (Gallery)</a><a href="process.html">Nº 05 — Process</a></div>
+<div><p class="fh">The Garden</p><a href="shop.html">Nº 01 — The Wall (Shop)</a><a href="commission.html">Nº 02 — The Commission</a><a href="kit.html">Nº 03 — The $39 Kit</a><a href="gallery.html">Nº 04 — The Gallery</a><a href="process.html">Nº 05 — Process</a></div>
 <div><p class="fh">Help</p><a href="faq.html">FAQ + Shipping &amp; Returns</a><a href="contact.html">Contact the studio</a><a href="cart.html">Your bag</a><a href="journal.html">Journal</a><a href="about.html">About Farhad</a></div>
-<div><p class="fh">Follow</p><a href="https://www.instagram.com/a.d.i.p.la" target="_blank" rel="noopener">Instagram — @a.d.i.p.la</a><a href="https://www.threads.net/@a.d.i.p.la" target="_blank" rel="noopener">Threads — @a.d.i.p.la</a><a href="https://www.facebook.com/AnotherDayInParadiseADIP" target="_blank" rel="noopener">Facebook</a><p style="margin-top:8px;color:#B9B09A">TikTok · Pinterest · YouTube launch with this site. Handles already claimed: @a.d.i.p.la — "Not food. Hand-drawn meditation art by Farhad, Los Angeles."</p></div>
+<div><p class="fh">Follow</p><a href="https://www.instagram.com/a.d.i.p.la" target="_blank" rel="noopener">Instagram — @a.d.i.p.la</a><a href="https://www.threads.net/@a.d.i.p.la" target="_blank" rel="noopener">Threads — @a.d.i.p.la</a><a href="https://www.facebook.com/AnotherDayInParadiseADIP" target="_blank" rel="noopener">Facebook</a><p style="margin-top:8px;color:var(--dim)">TikTok · Pinterest · YouTube launch with this site. Handles already claimed: @a.d.i.p.la — "Not food. Hand-drawn meditation art by Farhad, Los Angeles."</p></div>
 </div>
-<p style="margin-top:36px;color:#B9B09A;font-size:15px">Drawn by hand in Beverly Hills 90210. Printed &amp; embroidered in Los Angeles. © ADIP LA — Farhad Rabbany.</p>
+<p style="margin-top:36px;color:var(--dim);font-size:15px">Drawn by hand in Beverly Hills 90210. Printed &amp; embroidered in Los Angeles. © ADIP LA — Farhad Rabbany.</p>
 </div></footer>
 <script src="app.js"></script>
 <script>
