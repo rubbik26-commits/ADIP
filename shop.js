@@ -3,7 +3,7 @@
    Bag: localStorage "adipbag3". Orders: localStorage "adiporders3". */
 (function(){
 "use strict";
-var P = window.ADIP_PRODUCTS || [];
+var P = (window.ADIP_PRODUCTS || []).concat(window.ADIP_COLLAB || []);
 var byId = {}; P.forEach(function(p){ byId[p.id]=p; });
 var SIZE_ORDER = ["S","M","L","XL"];
 function money(n){ return "$" + n.toLocaleString("en-US"); }
@@ -45,7 +45,8 @@ function priceText(p){
 function tile(p){
   return '<article class="tile"><a href="product.html?id=' + p.id + '" style="text-decoration:none">' +
     '<span class="mat" style="display:block"><img src="' + p.images[0] + '" alt="' + p.name + ' — by Farhad Rabbany" loading="lazy" width="900" height="900"></span>' +
-    '<span class="tilemeta"><span class="tilename">' + p.name + '</span><span class="tileprice">' + priceText(p) + '</span></span></a>' +
+    '<span class="tilemeta"><span class="tilename">' + p.name + '</span><span class="tileprice">' + priceText(p) + '</span></span>' +
+    (p.collab ? '<span class="tilebadge">Limited Edition · Skyline × ADIP</span>' : '') + '</a>' +
     (p.type==="request"
       ? '<a class="tileadd" href="product.html?id=' + p.id + '">Ask the studio</a>'
       : '<button class="tileadd" data-add="' + p.id + '">' + (p.type==="sized" || p.type==="print" ? "Choose options" : "Add to bag — " + priceText(p)) + '</button>') +
@@ -54,7 +55,7 @@ function tile(p){
 function paintShop(){
   var grid = document.querySelector("[data-shopgrid]"); if (!grid) return;
   var f = grid.getAttribute("data-filter") || "all";
-  var list = P.filter(function(p){ return f==="all" || p.cat===f || (f==="under100" && p.price>0 && p.price<100); });
+  var list = P.filter(function(p){ return f==="all" || p.cat===f || (f==="collab" && !!p.collab) || (f==="under100" && p.price>0 && p.price<100); });
   grid.innerHTML = list.map(tile).join("");
   var c = document.querySelector("[data-shopcount]");
   if (c) c.textContent = list.length + (list.length===1 ? " piece" : " pieces");
@@ -90,7 +91,10 @@ function paintGallery(){
   var host = document.querySelector("[data-gallery]"); if (!host) return;
   var items = [];
   P.filter(function(p){ return p.cat==="prints"; }).forEach(function(p){
-    p.images.forEach(function(src){ items.push({ src:src, cap:p.name, price:"from " + money(p.price), id:p.id }); });
+    var seenStem = {};
+    p.images.forEach(function(src){ var stem = src.split("/").pop().replace(/-1(\.[a-z]+)$/i, "$1");
+      if (seenStem[stem]) return; seenStem[stem] = 1;
+      items.push({ src:src, cap:p.name, price: p.type==="request" ? "Price on request" : "from " + money(p.price), id:p.id }); });
   });
   (window.ADIP_ART || []).forEach(function(a){ items.push({ src:a.src, cap:a.cap, price:"The drawing", id:"" }); });
   host.innerHTML = items.map(function(it, ix){
@@ -112,7 +116,7 @@ function paintProduct(){
     return '<button data-th="' + ix + '"' + (ix===0 ? ' class="on"' : '') + ' aria-label="Photo ' + (ix+1) + '"><img src="' + src + '" alt=""></button>'; }).join("");
   var isReq = p.type==="request", isCom = p.type==="commission";
   var priceLine = isReq ? "Price on request"
-    : p.type==="print" ? 'from <span data-price>' + money(p.price) + '</span>'
+    : p.type==="print" ? '<span data-price>from ' + money(p.price) + '</span>'
     : isCom ? '<span data-price>' + money(p.deposit) + '</span> deposit today · ' + money(p.price) + ' total'
     : '<span data-price>' + money(p.price) + '</span>';
   var commBlock = isCom ?
@@ -129,7 +133,7 @@ function paintProduct(){
     '<div class="galwrap"><div class="mat galmain"><img data-main src="' + p.images[0] + '" alt="' + p.name + ' — by Farhad Rabbany" width="1100" height="1100"></div>' +
     '<div class="galthumbs">' + thumbs + '</div>' +
     '<p class="mono" style="color:var(--mut);font-size:12px;letter-spacing:.14em;margin-top:12px">TAP THE LARGE PHOTO FOR THE LIGHTBOX · ' + p.images.length + (p.images.length===1 ? " PHOTO" : " PHOTOS") + '</p></div>' +
-    '<div class="pdpinfo"><p class="kick">' + (p.cat==="prints" ? "Canvas print · Hand Drawing" : p.cat==="hoodies" ? "Hoodie · Wearable art" : p.cat==="caps" ? "Cap · Wearable art" : "T-Shirt · Wearable art") + '</p>' +
+    '<div class="pdpinfo"><p class="kick">' + (p.collab ? "Skyline × ADIP · Limited Edition Collaboration" : p.cat==="prints" ? "Canvas print · Hand Drawing" : p.cat==="hoodies" ? "Hoodie · Wearable art" : p.cat==="caps" ? "Cap · Wearable art" : "T-Shirt · Wearable art") + '</p>' +
     '<h1 class="pdpname"><span class="seal"></span>' + p.name + '</h1>' +
     '<p class="pdpprice">' + priceLine + '</p>' +
     '<p class="pdpdesc">' + p.desc + '</p>' + commBlock +
@@ -142,7 +146,7 @@ function paintProduct(){
   var sel = variants[0] || "", qty = 1, motif = "HEARTS", word = "";
   function unit(){ return (p.type==="print") ? (p.ladder[sel] || p.price) : isCom ? p.deposit : p.price; }
   function sync(){ var vs = host.querySelector("[data-vsel]"); if (vs) vs.textContent = sel;
-    var pr = host.querySelector("[data-price]"); if (pr && p.type==="print") pr.textContent = money(unit());
+    var pr = host.querySelector("[data-price]"); if (pr && p.type==="print") pr.textContent = (sel === variants[0] ? "from " : "") + money(unit());
     var tt = host.querySelector("[data-total]"); if (tt) tt.textContent = money(unit()*qty);
     var q = host.querySelector("[data-qty]"); if (q) q.textContent = qty;
     var cs = host.querySelector("[data-csum]");

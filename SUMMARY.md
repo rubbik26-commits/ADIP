@@ -16,8 +16,9 @@ Commission, Shipping, Returns, Terms, Privacy, Cookies, Accessibility).
 - Catalogue extracted from the live WooCommerce product table: all 23
   products, real names, real prices, real options (apparel sizes; the canvas
   ladder 11x14 $200 / 16x20 $220 / 18x24 $250 / 24x36 $300 / 30x40 $350 taken
-  from the products' own option strings), and real description copy on the
-  product pages.
+  from the products' own option strings), and the products' complete description copy,
+  pulled in full from the live WooCommerce Store API (the crawl summaries
+  truncated mid-sentence; the pages now carry the finished text).
 - Every image: all 65 product photos (galleries of 4–10 on apparel) plus the
   site's art and homepage shelf photography — 77 unique URLs, each
   curl-verified 200 before the push. Four 12–27 MB studio props use the
@@ -54,3 +55,6 @@ Real card capture needs the studio's own payment account (PayPal /
 WooPayments, as on his live store). Until Farhad provides it, checkout
 records and confirms orders on screen and the studio confirms payment by
 email. Stated on the checkout page itself.
+
+## Update 2026-11-25 — Skyline × ADIP Limited Edition Collaboration
+Added at Robert's direction: collaboration.html + collab.js — seven of Farhad's pieces (3 hoodies, 3 caps, tee) recreated with Skyline branding: his designs untouched, the New York skyline drawn in his own line style inside a circle, SKYLINE PROPERTIES beneath it. Real prices ($175/$69/$75/$300). The collab products merge into the shop (All = 30 pieces) with a Limited Edition filter chip and badge, full product pages (galleries, sizes, bag, checkout), a home-page panel + rail, nav and footer links, sitemap and llms.txt entries, and ItemList JSON-LD on the collaboration page. Collab photographs are AI-edited recreations of the studio's product photos, embedded in collab.js as data URIs (the repo push is text-only). Verified locally end-to-end before push: 7 tiles, filters, PDP gallery/size/add-to-bag, cart math ($175 + $12 = $187), phone layout, no horizontal scroll.
