@@ -122,3 +122,37 @@ stock, and a working checkout, so nothing had to be migrated or rebuilt.
    the Shop).
 6. **GitHub Pages toggle** (§5) — one settings click by the repo owner if the
    canonical github.io address is wanted instead of the mirror link.
+
+## 7. Addendum — the glass edition + SEO/AEO layer (same night)
+
+**Design.** Robert asked where the glassmorphism was — he had raised glass, glow,
+shine, and metal at the start of the commission, and the matte print build didn't
+have it. The site is now "The Wall, Behind Glass": the same Poster Wall under a
+laminate layer. Frosted-glass header and cobalt-glass Index menu (backdrop blur),
+a glass Paradise List popup, metallic gold foil stamps with a moving sheen, an
+animated metallic sweep across the Commission poster, glowing red/cobalt buttons
+with a light sweep on hover, and product cards that tilt toward the pointer with
+the light following your hand across every poster. Reduced-motion settings turn
+the motion off. Verified by screenshot and a full overflow re-scan at phone,
+mid, and desktop widths.
+
+**SEO / AEO — what is now on every page:**
+- Structured data (JSON-LD): Organization + WebSite on the home page; a Product
+  record with price and availability for the hoodie, canvas, commission, and kit
+  pages; an ItemList of all 15 products on the shop page; a FAQPage record built
+  from the FAQ page's own 15 questions and answers; BreadcrumbList on every
+  inner page.
+- Canonical URL, robots meta (index, follow, large image previews), theme-color,
+  font preconnects on all 14 pages — on top of the unique titles, meta
+  descriptions, Open Graph, and Twitter Cards from the first push.
+- Every photo carries its real width/height (no layout shift) and lazy loading
+  below the fold.
+- `robots.txt` (all crawlers and the major AI answer-engine bots explicitly
+  allowed, sitemap declared), `sitemap.xml` (all 14 pages), and `llms.txt` —
+  a plain-text brand brief for AI answer engines: who Farhad is, what is sold
+  at what price, the policies, and the social profiles.
+- Honest boundary: this layer makes the code fully index- and answer-ready.
+  Rankings and answer-engine citations accrue to the real domain when this
+  design is deployed at anotherdayinparadise.la (with Search Console
+  verification and the sitemap submitted there); a mirror link is for review
+  and sharing, not for ranking.

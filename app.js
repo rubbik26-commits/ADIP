@@ -61,3 +61,18 @@ document.querySelectorAll('[data-hold]').forEach(function(btn){
  function end(){if(raf&&prog<1){cancelAnimationFrame(raf);raf=null;}}
  btn.addEventListener('pointerdown',begin);btn.addEventListener('pointerup',end);btn.addEventListener('pointerleave',end);
 });
+// Glass layer: light follows the pointer across cards and posters; cards tilt.
+(function(){
+ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var fine=window.matchMedia&&window.matchMedia('(pointer: fine)').matches;
+ function setv(el,x,y){var r=el.getBoundingClientRect();if(!r.width)return;
+  el.style.setProperty('--mx',((x-r.left)/r.width*100)+'%');
+  el.style.setProperty('--my',((y-r.top)/r.height*100)+'%');
+  if(fine&&el.classList.contains('pcard')){
+   el.style.setProperty('--rx',(((x-r.left)/r.width-.5)*7)+'deg');
+   el.style.setProperty('--ry',(-((y-r.top)/r.height-.5)*7)+'deg');}}
+ document.querySelectorAll('.pcard,.poster').forEach(function(el){
+  el.addEventListener('pointermove',function(e){setv(el,e.clientX,e.clientY);});
+  el.addEventListener('pointerleave',function(){el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');});
+ });
+})();
