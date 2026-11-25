@@ -16,8 +16,9 @@ Commission, Shipping, Returns, Terms, Privacy, Cookies, Accessibility).
 - Catalogue extracted from the live WooCommerce product table: all 23
   products, real names, real prices, real options (apparel sizes; the canvas
   ladder 11x14 $200 / 16x20 $220 / 18x24 $250 / 24x36 $300 / 30x40 $350 taken
-  from the products' own option strings), and real description copy on the
-  product pages.
+  from the products' own option strings), and the products' complete description copy,
+  pulled in full from the live WooCommerce Store API (the crawl summaries
+  truncated mid-sentence; the pages now carry the finished text).
 - Every image: all 65 product photos (galleries of 4–10 on apparel) plus the
   site's art and homepage shelf photography — 77 unique URLs, each
   curl-verified 200 before the push. Four 12–27 MB studio props use the

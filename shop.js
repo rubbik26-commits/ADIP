@@ -90,7 +90,10 @@ function paintGallery(){
   var host = document.querySelector("[data-gallery]"); if (!host) return;
   var items = [];
   P.filter(function(p){ return p.cat==="prints"; }).forEach(function(p){
-    p.images.forEach(function(src){ items.push({ src:src, cap:p.name, price:"from " + money(p.price), id:p.id }); });
+    var seenStem = {};
+    p.images.forEach(function(src){ var stem = src.split("/").pop().replace(/-1(\.[a-z]+)$/i, "$1");
+      if (seenStem[stem]) return; seenStem[stem] = 1;
+      items.push({ src:src, cap:p.name, price: p.type==="request" ? "Price on request" : "from " + money(p.price), id:p.id }); });
   });
   (window.ADIP_ART || []).forEach(function(a){ items.push({ src:a.src, cap:a.cap, price:"The drawing", id:"" }); });
   host.innerHTML = items.map(function(it, ix){
@@ -112,7 +115,7 @@ function paintProduct(){
     return '<button data-th="' + ix + '"' + (ix===0 ? ' class="on"' : '') + ' aria-label="Photo ' + (ix+1) + '"><img src="' + src + '" alt=""></button>'; }).join("");
   var isReq = p.type==="request", isCom = p.type==="commission";
   var priceLine = isReq ? "Price on request"
-    : p.type==="print" ? 'from <span data-price>' + money(p.price) + '</span>'
+    : p.type==="print" ? '<span data-price>from ' + money(p.price) + '</span>'
     : isCom ? '<span data-price>' + money(p.deposit) + '</span> deposit today · ' + money(p.price) + ' total'
     : '<span data-price>' + money(p.price) + '</span>';
   var commBlock = isCom ?
@@ -142,7 +145,7 @@ function paintProduct(){
   var sel = variants[0] || "", qty = 1, motif = "HEARTS", word = "";
   function unit(){ return (p.type==="print") ? (p.ladder[sel] || p.price) : isCom ? p.deposit : p.price; }
   function sync(){ var vs = host.querySelector("[data-vsel]"); if (vs) vs.textContent = sel;
-    var pr = host.querySelector("[data-price]"); if (pr && p.type==="print") pr.textContent = money(unit());
+    var pr = host.querySelector("[data-price]"); if (pr && p.type==="print") pr.textContent = (sel === variants[0] ? "from " : "") + money(unit());
     var tt = host.querySelector("[data-total]"); if (tt) tt.textContent = money(unit()*qty);
     var q = host.querySelector("[data-qty]"); if (q) q.textContent = qty;
     var cs = host.querySelector("[data-csum]");

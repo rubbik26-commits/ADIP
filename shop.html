@@ -35,7 +35,7 @@
 <main class="wrap" style="padding:48px 0 10px">
 <p class="kick" data-rv>The shop</p>
 <h1 class="h-display" data-rv style="font-size:clamp(2.6rem,7vw,5.4rem)">Shop hoodies,<br>caps &amp; art.</h1>
-<p class="lede" data-rv style="margin-top:14px">The whole catalogue — <span data-shopcount></span> — every piece with every photograph the studio has, at its real price.</p>
+<p class="lede" data-rv style="margin-top:14px">The whole catalogue — every piece with every photograph the studio has, at its real price.</p>
 <div class="filters" data-rv role="group" aria-label="Filter the shop">
 <button class="fchip on" data-f="all">All 23</button>
 <button class="fchip" data-f="hoodies">Hoodies</button>
@@ -44,7 +44,8 @@
 <button class="fchip" data-f="prints">Prints</button>
 <button class="fchip" data-f="under100">Under $100</button>
 </div>
-<div class="grid" data-shopgrid data-filter="all" style="margin-top:26px"></div>
+<p class="mono" style="color:var(--mut);font-size:12.5px;letter-spacing:.14em;margin-top:20px">SHOWING <span data-shopcount></span></p>
+<div class="grid" data-shopgrid data-filter="all" style="margin-top:14px"></div>
 </main>
 <script>
 document.querySelectorAll(".fchip").forEach(function(c){c.addEventListener("click",function(){
