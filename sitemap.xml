@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/index.html</loc><lastmod>2026-11-24</lastmod><priority>1.0</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/shop.html</loc><lastmod>2026-11-24</lastmod><priority>0.9</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/product.html</loc><lastmod>2026-11-24</lastmod><priority>0.9</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/print.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/commission.html</loc><lastmod>2026-11-24</lastmod><priority>0.9</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/kit.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/gallery.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/process.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/watch.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/about.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/journal.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/faq.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/contact.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://raw.githack.com/rubbik26-commits/ADIP/main/cart.html</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
+<url><loc>index.html</loc></url>
+<url><loc>shop.html</loc></url>
+<url><loc>product.html</loc></url>
+<url><loc>commission.html</loc></url>
+<url><loc>story.html</loc></url>
+<url><loc>faq.html</loc></url>
+<url><loc>cart.html</loc></url>
+<url><loc>checkout.html</loc></url>
 </urlset>
